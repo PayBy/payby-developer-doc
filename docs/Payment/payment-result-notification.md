@@ -10,7 +10,7 @@ If the `notifyUrl` parameter is passed in the order creation request to receive 
 >
 > 1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
 >
-> 1. After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times.
+> 1. After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. 
 >
 > 2. The same notification may be sent to the merchant system multiple times. The merchant system must be able to handle duplicate notifications correctly. 
 >
@@ -18,7 +18,7 @@ If the `notifyUrl` parameter is passed in the order creation request to receive 
 >
 > 4. In the case that the order status is unknown or the PayBy payment result notification did not arrive, it is recommended that the merchant actively call the `Retrieve order detail` interface to confirm the order status. 
 >
-> 5. The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content. </font>
+> 5. The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
 
 
 

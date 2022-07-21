@@ -1,4 +1,4 @@
-## Payscene parameters
+font## Payscene parameters
 
 
 
@@ -18,9 +18,9 @@ Payment scene you are going to use.
 
 Example value: PAYPAGE.
 
+<br/>
 
-
-<font color = '#333333'> **PayScene parameters**</font>
+** <font color = '#000'>PayScene parameters</font> **
 
 - **redirectUrl**   <font color = ' #7d8793'>String</font> 
 
