@@ -3,71 +3,11 @@ title: Order Creation
 toc_max_heading_level: 6
 ---
 
-import Paypage from "./_paypage.md";
-import E_WALLET from "./_e-wallet.md";
-import AutoDebit from "./_auto-debit.md";
-import DirectPay from "./_direct-pay.md";
-import DYNQR from "./_dynqr.md";
-import JSAPI from "./_jsapi.md";
-import QRPAY from "./_qrpay.md";
-import InAPP from "./_in-app.md";
+
 import BizContent from "./_biz_content.mdx";
 import AcquireOrder from "./_acquire-order.mdx";
 import { useState } from "react";
 
-export const PRODUCTS_ENUM = {
-  PAYPAGE: "Paypage",
-  IN_APP_SDK: "In-APP SDK",
-  E_WALLET: "E-wallet",
-  DYNQR: "DYNQR",
-  QRPAY: "QRPAY",
-  JSAPI: "JSAPI",
-  AUTODEBIT: "AUTODEBIT",
-  DIRECTPAY: "DIRECTPAY",
-};
-
-export const PRODUCTS_MAP = {
-  [PRODUCTS_ENUM.PAYPAGE]: Paypage,
-  [PRODUCTS_ENUM.E_WALLET]: E_WALLET,
-  [PRODUCTS_ENUM.DYNQR]: DYNQR,
-  [PRODUCTS_ENUM.QRPAY]: QRPAY,
-  [PRODUCTS_ENUM.JSAPI]: JSAPI,
-  [PRODUCTS_ENUM.AUTODEBIT]: AutoDebit,
-  [PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
-  [PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
-};
-
-export function SwitchProduct() {
-  const [product, setProduct] = useState(PRODUCTS_ENUM.PAYPAGE);
-  const ProductComponent = PRODUCTS_MAP[product];
-  return (
-    <div>
-      <label htmlFor="product" className="">
-        Products:
-      </label>
-      &nbsp;
-      <select name="product" id="product" value={product} onChange={(e) => setProduct(e.target.value)}>
-        {Object.values(PRODUCTS_ENUM).map((s) => (
-          <option key={s} value={s}>
-            {s}
-          </option>
-        ))}
-      </select>
-      <br />
-      <br />
-      <li>
-        <b>paySceneParams</b> <span style={{ color: " #7d8793" }}>String</span>
-      </li>
-      <br />
-      <details>
-        <summary>
-          Different payment scenarios need to pass different scenario parameters. For details, please visit
-        </summary>
-        <ProductComponent />
-      </details>
-    </div>
-  );
-}
 
 ## Create order
 
