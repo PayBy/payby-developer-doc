@@ -1,0 +1,105 @@
+import AccessoryContent from './_accessory-content.mdx';
+
+
+- **merchantOrderNo** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+
+  The merchant's referece number of the request. Used to track every request.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+<br />
+
+- **subject** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+
+  Description of this order.
+
+  Example value: iPhone
+
+  Maximum length: `12`
+
+  <br />
+
+- **totalAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
+
+  The attributes are:
+
+  - **amount** <span style={{color:" #7d8793"}}>Decimal</span> <span style={{color:"#f19938"}}>Required</span>
+
+    Allow 12 digits before the decimal point. Allow 2 digits after the decimal point.
+
+    Example value: 12.34
+
+  <br />
+
+  - **currency** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+
+  The code to identify the order currency. Currently only AED is supported.
+
+  Example value: AED
+
+<br />
+
+- **expiredTime** <span style={{color:" #7d8793"}}>Timestamp</span>
+
+  The order expiration time, after which the payment cannot be completed.
+
+  The value should not exceed 48 hours after the request time. If no parameter is passed, the default expiration time is 2 hours after the request time.
+
+  Example value: 1581493898000
+
+<br />
+
+- **payeeMid** <span style={{color:" #7d8793"}}>String</span>
+
+  The payee can be another merchant. If no parameter is passed, the default payee is the merchant itself.
+
+  Example value: 200001200101
+
+  Maximum length: `12`
+
+<br />
+
+- **paySceneCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
+
+  Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
+
+  <SwitchProduct />
+
+<br />
+
+- **notifyUrl** <span style={{color:" #7d8793"}}>String</span>
+
+  To receive asynchronous notifications of order status updates, you can pass the notify URL.
+
+  Example value: https://www.payby.com/
+
+  Maximum length: `200`
+
+<br />
+
+- **secondaryMerchantId** <span style={{color:" #7d8793"}}>String</span>
+
+  If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
+
+  Maximum length: `200`
+
+<br />
+
+- **deviceId** <span style={{color:" #7d8793"}}>String</span>
+
+  If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistics.
+  Note that this parameter must be passed if you are using the secondery merchant function, this parameter must be passed.
+
+  Maximum length: `200`
+
+<br />
+
+- **accessoryContent**
+
+  <details>
+    <summary>This can be useful for storing additional information about the order.</summary>
+    <AccessoryContent/> 
+  </details>
+
