@@ -1,0 +1,32 @@
+import { useState } from "react";
+
+
+export function SwitchProduct() {
+  const [product, setProduct] = useState(PRODUCTS_ENUM.PAYPAGE);
+  const ProductComponent=PRODUCTS_MAP[product]
+  return (
+    <div>
+      <label htmlFor="product" className=''>Products:</label>&nbsp;
+      <select name="product" id="product" value={product} onChange={(e) => setProduct(e.target.value)}>
+        {Object.values(PRODUCTS_ENUM).map(s=><option key={s} value={s}>{s}</option>)}
+      </select>
+      <br/>
+      <br/>
+      <ProductComponent/>
+    </div>
+  );
+}
+
+
+## Payscene parameters
+
+In the order creation API, different payment sceces need to pass different parameters. Find the payment scene codes and parameters you need to use on this page.
+
+<SwitchProduct />
+
+
+
+
+
+
+
