@@ -1,7 +1,9 @@
 ---
 sidebar_position: 3
+toc_max_heading_level: 6
 ---
 
+import RequestHeader from '../_request-header.mdx'
 
 
 # Deposit result notification
@@ -13,7 +15,7 @@ If the `notifyUrl` parameter is passed in the order creation request to receive 
  **<font color = '#f19938'>Notice </font>**
 
 1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
-2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours.  
+2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
 3.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
 
 <br/>

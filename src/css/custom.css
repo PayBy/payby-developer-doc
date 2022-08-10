@@ -48,3 +48,9 @@
 .col{
   padding: 0 calc(var(--ifm-spacing-horizontal) * 3);
 }
+
+.full-width-table-container table{
+  display: table;
+  width: 100%;
+  text-align: center;
+}
