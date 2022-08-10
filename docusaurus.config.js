@@ -85,7 +85,7 @@ const config = {
             items: [
               {
                 label: 'Payment',
-                to: '/payment/create-order',
+                to: '/Payment/OrderCreation/',
               },
             ],
           },
