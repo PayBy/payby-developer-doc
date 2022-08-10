@@ -1,0 +1,196 @@
+---
+sidebar_position: 5
+toc_max_heading_level: 6
+---
+
+import AcquireOrder from "./OrderCreation/_acquire-order.mdx";
+
+
+
+# Asynchronous notification
+
+If the `notifyUrl` parameter is passed in the order creation request to receive payment notifications, Payby will send a message to the address when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
+
+<br/>
+
+**<span style={{color:"#f19938"}}>Notice</span>**
+
+1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
+2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
+6.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+**notify_timestamp**  <font color = ' #7d8793'>Timestamp</font>  <font color = '#f19938'>Required</font>
+
+The timestamp when Payby sent the request.
+
+Example value: 1586849271877
+
+<br/>
+
+**notify_id**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The unique identification number of this notification within the Payby system.
+
+Example value: 202004140007474501
+
+<br/>
+
+**acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
+
+  <details>
+  <summary>The attributes are:</summary>
+    <AcquireOrder />
+  </details>
+
+#### Request sample
+
+```json
+Http Header
+{
+    "Content-Type": "application/json",
+  	"Sign": "NshUvvVM3f/2eYcHyel7w7xDyzX1o7azydZ3ctGVWEghE4MCDcrEfO7LHmuDCQO4tqLwXwIv4pJfPH37X/o4V8q9QaE+gcPPvzO2xlT/Fksocd+gBoBWGz6SaEmD3eKQ7J9SU3+sKLOre9BomzJ5CuzsFAbBrZVw1+0MiwE3NTJvKEL3CW6LhHj2/1bnFMrQeBXP0z2LoqqODORG5Sgy8W9EPlMityjGOtPGMPj6iOK6il1KIeGRBW1wBeP0ZP/n8hwsob/fLygJ8UhB/kOAICXRrA+uo2Z4JJXhuX9P+C0BufPWHIdwq7ZdAvcxmSXFjtwIHuY9JFNWdTBZhxNw3g=="
+}
+
+Http Body
+{
+    "_input_charset": "UTF-8",
+    "acquireOrder": {
+        "accessoryContent": {
+            "amountDetail": {
+                "amount": {
+                    "amount": 1.09,
+                    "currency": "AED"
+                },
+                "vatAmount": {
+                    "amount": 20.65,
+                    "currency": "AED"
+                }
+            },
+            "goodsDetail": {
+                "body": "Gifts",
+                "categoriesTree": "CT12",
+                "goodsCategory": "GC10",
+                "goodsId": "GI1005",
+                "goodsName": "Candy flower",
+                "price": {
+                    "amount": 10.87,
+                    "currency": "AED"
+                },
+                "quantity": 2.0
+            },
+            "terminalDetail": {
+                "merchantName": "LuLu",
+                "operatorId": "OP1000000000000001",
+                "storeId": "SI100000000000002",
+                "storeName": "LuLu",
+                "terminalId": "TI100999999999900"
+            }
+        },
+        "expiredTime": 1587120191014,
+        "merchantOrderNo": "M572007254058",
+        "notifyUrl": "http://www.yoursite.com",
+        "orderNo": "131587112991000943",
+        "paySceneCode": "PAYPAGE",
+        "payeeMid": "200000000888",
+        "paymentInfo": {
+            "paidAmount": {
+                "amount": 0.1,
+                "currency": "AED"
+            },
+            "paidTime": 1587113039000,
+            "payChannel": "BALANCE",
+            "payeeFeeAmount": {
+                "amount": 0.01,
+                "currency": "AED"
+            },
+            "payerFeeAmount": {
+                "amount": 0.0,
+                "currency": "AED"
+            },
+            "payerMid": "100000012396"
+        },
+        "product": "Basic Payment Gateway",
+        "requestTime": 1587112991014,
+        "status": "PAID_SUCCESS",
+        "subject": "Your subject",
+        "totalAmount": {
+            "amount": 0.1,
+            "currency": "AED"
+        }
+    },
+    "notify_id": "202004170007499051",
+    "notify_time": "20200417124359",
+    "notify_timestamp": 1587113039189
+}
+```
+
+
+
+### Response 
+
+Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
+
+<br/>
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+#### Http Body
+
+---
+
+**response**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+Example value: Success
+
+<br/>
+
+#### Response sample
+
+```json
+Http Header
+{
+	"Content-Type": "application/json" 
+}
+
+Http Body
+{
+  SUCCESS
+}
+```
+

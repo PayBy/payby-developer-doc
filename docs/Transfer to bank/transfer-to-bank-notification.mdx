@@ -1,0 +1,149 @@
+---
+sidebar_position: 5
+---
+import TransferToBankOrder from './_transfer-to-bank-order.mdx'
+
+
+# Asynchronous notification
+
+If the `notifyUrl` parameter is passed in the transfer to bank request to receive notifications, Payby will send a message to the address when when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
+
+<br/>
+
+ **<font color = '#f19938'>Notice</font>**
+
+1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
+2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
+3.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+**notify_timestamp**  <font color = ' #7d8793'>Timestamp</font>  <font color = '#f19938'>Required</font>
+
+The timestamp when Payby sent the request.
+
+Example value: 1586849271877
+
+<br/>
+
+**notify_id**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The unique identification number of this notification within the Payby system.
+
+Example value: 202004140007474501
+
+<br/>
+
+
+- **transferToBankOrder**   <font color = ' #7d8793'>Object</font>
+
+  <details>
+  <summary>The attributes are:</summary>
+    <TransferToBankOrder />
+  </details>
+
+
+#### Notification sample
+
+```json
+Http Header
+{
+    "Content-Type": "application/json; charset=UTF-8"
+}
+
+Http Body
+{
+    "_input_charset": "UTF-8",
+    "notify_id": "202004140007474501",
+    "notify_time": "20200414113800",
+    "transferToBankOrder": {
+        "amount": {
+            "amount": 0.02,
+            "currency": "AED"
+        },
+        "holderName": "00d74f270d2251e8fa6e7f3b1ea06bd3b5f32dfe4719f9df60982c55b24e4898",
+        "iban": "1fc44f25c178c422f705054c669cfa6133f6dc8e1fe24b3d96f847667db8b92c",
+        "memo": "company single pay",
+        "merchantOrderNo": "M188573109026",
+        "notifyUrl": "http://www.yoursite.com",
+        "orderNo": "911586849271010217",
+        "paymentInfo": {
+            "arrivalTime": 1586849273000,
+            "payerFeeAmount": {
+                "amount": 5.0,
+                "currency": "D"
+            }
+        },
+        "product": "Transfer To Bank",
+        "requestTime": 1586849271877,
+        "status": "SUCCESS",
+        "swiftCode": "BBME AEAD"
+    }
+}
+```
+
+
+
+### Response 
+
+Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
+
+<br/>
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+#### Http Body
+
+---
+
+**response**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+Example value: Success
+
+<br/>
+
+```json
+Http Header
+{
+    "Content-Type": "application/json; charset=UTF-8"
+}
+
+Http Body
+{
+  SUCCESS
+}
+```

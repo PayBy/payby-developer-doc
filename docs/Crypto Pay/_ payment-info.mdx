@@ -1,0 +1,45 @@
+- **paidAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+
+The amount actually paid by the user. If a discount is used, it will be different from the order amount.
+
+<br/>
+
+- **paidTime** <font color = ' #7d8793'>TimeStamp</font> <font color = '#f19938'>Required</font>
+
+Payer's successful payment time
+
+Example value: 1581493898000
+
+<br />
+
+- **payerMid** <font color = ' #7d8793'>String</font>
+
+If the payer uses a BOTIM or Pay By wallet for payment, `payerMid` represents the payer's member ID in the wallet.
+
+Example value: 200001200101
+
+<br />
+
+- **payerFeeAmount** <font color = ' #7d8793'>Money</font>
+
+If the order transaction fee is set to be charged from the payer, `payerFeeAmount` represents the actual amount of the transaction fee.
+
+<br />
+
+- **payeeFeeAmount** <font color = ' #7d8793'>Money</font>
+
+If the order transaction fee is set to be charged from the payee, `payeeFeeAmount` represents the actual amount of the transaction fee.
+
+<br />
+
+- **payChannel** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+The payment channel used by the payer. The possible values are`BANKCARD`, `INSTALLMENT`, `EWALLET`, etc.
+
+<br />
+
+- **settlementAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+
+The actual funds the payee can receive after deducting transactions fees and amount for other reasons.
+
+<br />

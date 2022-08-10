@@ -1,0 +1,135 @@
+- **requestTime**   <font color = ' #7d8793'>Timestamp</font>    <font color = '#f19938'>Required</font>
+
+  Request time passed by the merchant when placing the order.
+
+  Example value: 1581493898000
+
+  <br/>
+
+- **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The merchant's referece number of the request. Used to track every request.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+  <br/>
+
+- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The PayBy's unique identification number of the order. 
+
+  Example value: 131658300517875854
+  
+  <br/>
+
+- **product**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The product name of the API method used in the order. This product name is only used for PayBy internal classification.
+
+  Maximum length: `100`
+  
+  <br/>
+
+- **status**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
+
+  The possible values are:
+
+  `CREATED`. The order has been created.
+
+  `SUCCESS`.  The transfer completed.
+
+  `FAILURE`. The order has been cancelled or expired.
+  
+  <br/>
+
+- **paymentInfo**   <font color = ' #7d8793'>Object</font>   
+
+  - **payerFeeAmount**  <font color = ' #7d8793'>Money</font>  <font color = '#f19938'>Required</font>
+
+    In this transfer, the fee that the payer needs to pay.
+  
+    <br/>
+
+  - **arrivalTime**  <font color = ' #7d8793'>TimeStamp</font>  <font color = '#f19938'>Required</font>
+
+    Estimated time of fund arrival. Note that this is not the actual arrival time.
+
+    Example value: 1581493898000
+  
+    <br/>
+
+- **beneficiaryIdentityType**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>  
+
+  The fund can be transfered to the beneficiary through mobile phone number, PayBy member id or BOTIM member id.
+
+  The possible values are: 
+
+  `PHONE_NO`. Transfer through mobile phone number.
+
+  `MEMBER_ID`. Transfer through PayBy member id.
+
+  `TOTOK_UID`. Transfer through Totok member id.
+
+  Maximum length: `20`
+
+  <br/>
+
+- **beneficiaryIdentity**   <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+  After selecting the beneficiary identity type, what value should be passed. 
+
+  The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
+
+  For `PHONE_NO`, example value: +971-585812345
+
+  For `MEMBER_ID`, example value: 100006514321
+
+  Maximum length: `20`
+
+  <br/>
+
+- **beneficiaryFullName**   <font color = ' #7d8793'>String</font>   
+
+  If the parameter is passed, PayBy will verify whether the parameter is consistent with the beneficiary's KYC information. If not, the transfer will fail. If the parameter is not passed, PayBy will not perform verification.
+
+  The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
+
+  Maximum length: `100`
+
+  <br/>
+
+- **memo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The description of this transfer.
+
+  Maximum length: `128`
+
+  <br/>
+
+- **notifyUrl**   <font color = ' #7d8793'>String</font>
+
+  To receive asynchronous notifications of order status updates, you can pass the notify URL.
+
+  Example value: https://www.yoursite.com
+
+  Maximum length: `200`
+
+  <br/>
+
+- **failCode**   <font color = ' #7d8793'>String</font>   
+
+  If the order status is `FAILURE`, the code to identify the exact reason.
+
+  Example value: 504
+
+  <br/>
+
+- **failDes**   <font color = ' #7d8793'>String</font>   
+
+  If the order status is `FAILURE`, the failure reason.
+
+  Example value: SERVICE_TIMEOUT
+  
+  <br/>

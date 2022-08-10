@@ -1,0 +1,303 @@
+---
+sidebar_position: 1
+---
+
+
+
+# Get deposit address
+
+Get a deposit address for a specific  customer id.
+
+<br/>
+
+### API URL
+
+Staging : https://uat.test2pay.com/sgs/api/ccdeposit/getAddress
+
+Production : https://api.payby.com/sgs/api/ccdeposit/getAddress
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+**Content-Language**    <font color = '#7d8793'>String</font> 
+
+The language in which the response message will be used, currently only English is supported.
+
+Example value: en
+
+Maximum length: `10`
+
+
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+Requests should be signed using private-key cryptography. This allows the payment gateway to verify that an incoming request is really from your application.
+
+
+
+**Partner-Id**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+The merchant id of your account. 
+
+Example value: 200001200101
+
+Maximum length: `12`
+
+
+
+#### Http Body
+
+---
+
+**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+Example value: 1581493898000
+
+<br/>
+
+**bizContent**   <font color = ' #7d8793'>Object</font>  
+
+The attributes are:
+
+- **customerId**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The customer's unique id generated in merchant system.
+
+  Maximum length: `200`
+  
+  <br/>
+
+- **assetCode**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The code of crypto to be deposited. The possible values are:
+
+  `USDT`
+
+  `BTC`
+
+  `BUSD`
+
+  `ETH`
+
+  `USDC`
+
+  <br/>
+
+- **network**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  To deposit the crypto, which network will be used. The possible values are:
+
+  `BTC`
+
+  `ETH`
+
+  `TRON`
+
+  <br/>
+
+####  Request sample
+
+```json
+Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "IXJI/QicPQotIsIDBcSGIg6jtJUXs1rTuifQFZUNd3KDTl25GKmpYO7OrkaKkTV0shDRitLmkxJCe3Z60zHE2ZSeVczrhwrnmuMG+bX9N22Hw821H6MydsXetYHRnyf5dPbgpmVja582w49grA6jRlVFAVMYdxKJDPSCb2X/IpltvyrLQ1Wt+lqr+fnpYXvyON6/PIZIQIknC8BVddVahxJnaC6HEagvJf6gskz22/DFfPHT1mlMA9pg8qrbh4O7DYZahf8TB3nIzAPc/FHOUZkYYTT2c8m4eLL8740nJVK7D3IOSqSnBAU/iJ2omjPPFvRCCSqzz17pkGsT7AW91w==",
+    "Partner-Id": "200000000888"
+}
+
+Http Body
+{
+    "requestTime": 1581404947666,
+    "bizContent": {
+        "customerId": "M965739182419",
+        "assetCode": "ETH",
+        "network": "ETH"
+    }
+}
+```
+
+
+
+### Response
+
+#### Http Header
+
+---
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+**head** 
+
+- **applyStatus**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
+
+  The result of the request. The possible values are:
+
+  `SUCCESS `- Application successful.
+  `FAIL` - Application failed. Check the `code`  and `msg` for exact reason.
+  `ERROR` - Application error. The signature verification failed. Please check whether the private key used for the signature and the public key uploaded on the PayBy portal are one key pair.
+  
+  <br/>
+
+- **code**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  Response Codes. View the [resconse codes](#response code) section to know all the possible results.
+
+  Example value: 0
+
+  <br/>
+
+- **msg**   <font color = ' #7d8793'>String</font>   
+
+  Description of this code. View the [resconse codes](#response code) section to know all the possible results.
+
+  <br/>
+
+- **traceCode**   <font color = ' #7d8793'>String</font>   
+
+  No special meaning, PayBy internally used to locate the error.
+
+  <br/>
+
+**body** 
+
+**<font color = '#f19938'>Notice </font>**
+
+Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+
+- **wallet**   <font color = ' #7d8793'>Object</font>
+
+  The attributes are:
+
+     - **customerId**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+       The customer's unique id generated in merchant system.
+
+       Maximum length: `200`
+       
+       <br/>
+
+  - **status**   <font color = ' #7d8793'>ENUM</font>    <font color = '#f19938'>Required</font>
+
+    Whether the wallet address can be used currently. If deposit crypto to this address when status is `DISABLED`, the merchant will not receive the deposit amount.
+
+    The possible values are: `ENABLED`, `ENABLED`.
+
+    <br/>
+
+  - **product**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    This product name is only used for PayBy internal classification.
+
+    Example value: CTOPUP
+
+    <br/>
+
+  - **assetCode**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    The code of crypto to be deposited. The possible values are:
+
+    `USDT`
+
+    `BTC`
+
+    `BUSD`
+
+    `ETH`
+
+    `USDC`
+
+    <br/>
+
+  - **network**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    To deposit the crypto, which network will be used. The possible values are:
+
+    `BTC`
+
+    `ETH`
+
+    `TRON`
+
+    <br/>
+
+  - **address**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    The address PayBy generates based on the crypto code, network and customer id requested in the request.
+
+    Example value: 0x739B1B36139D83B8DD5Db035
+
+    <br/>
+
+  - **minDeposit**   <font color = ' #7d8793'>Decimal(23,8)</font>    <font color = '#f19938'>Required</font>
+
+    When depositing crypto to this address, the minimum deposit amount. Deposit less than this amount will fail.
+
+    Example value: 12345678.12345678
+
+    <br/>
+
+  - **confirm**   <font color = ' #7d8793'>Integer</font>    <font color = '#f19938'>Required</font>
+
+    When depositing to this address, the order will suscceed after how many network confirmations.
+
+    Example value: 2
+    
+    <br/>
+
+####  Response sample
+
+```json
+Http Header
+{
+    "sign": "JzWjVQ245trg3p0CyuwUUHN+Ck40q/HDaMvhqueHDP8YHqC/Uw3c9VWCw4gKsNbk+CRShjT+bvKkck8Fc3aAiRK8wIVQz6eu95sPkJgZp5A0P+tfMH/44F+3CrejtbEIkrHdSwhy98Tv9TYs9QFe7Yni/vEJ8P4OU6FZJOi8LGOMF6Nc8+S5qftc7qLA17cNJ7NJYC+EW8suGe/NmGA9c5NMK5BwHTHzXYOjXwXLx8mw4M3hiirl0wtVym3hrOmbkujYZCH56h8uOVF0FbHGu5uoq61NuniJitLLs9qyiEprQzUe8oWsJnHKXeGAgEr//fLXIXgYsRYb7AWoJzs6Eg=="
+}
+
+Http Body
+{
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"122185"
+    },
+    "body":{
+        "wallet":{
+            "address":"0xa4ef81a7d86f365785dd5bcc8e7964fe98155e16",
+            "confirm":2,
+            "customerId":"test001",
+            "minDeposit":0.01,
+            "network":"ETH",
+            "product":"CTOPUP",
+            "status":"ENABLED"
+        }
+    }
+}
+```
+
+

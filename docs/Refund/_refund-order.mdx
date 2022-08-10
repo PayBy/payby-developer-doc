@@ -1,0 +1,106 @@
+- **refundMerchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+	The merchant's referece number of the request. Used to track every request.
+
+	Example value: 1581493898000
+
+	Maximum length: `64`
+
+	<br/>
+
+- **orderNo** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+  The PayBy's unique identification number of the refund order.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+  <br />
+
+- **originMerchantOrderNo** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+  The merchant order number of the payment order, which the merchant needs to refund.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+  <br />
+
+- **status** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+  The status of the refund order. The possible values are:
+
+  `CREATED`. PayBy's server accepts the refund request.
+
+  `REFUNDED_SETTLED`. Refund amout have been deducted from the merchant's account.
+
+  `SUCCESS`. The refund has reached the payer's payment account.
+
+  `FAILURE`. Refund order failed
+
+  <br />
+
+- **amount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+
+  The amount to refund.
+
+  <br />
+
+- **notifyUrl** <font color = ' #7d8793'>String</font>
+
+  The merchant's referece number of the request. Used to track every request.
+
+  Maximum length: `200`
+
+  <br />
+
+- **reason** <font color = ' #7d8793'>String</font>
+
+  Reason for refund.
+
+  Maximum length: `64`
+
+  <br />
+
+- **secondaryMerchantId** <font color = ' #7d8793'>String</font>
+
+  If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
+
+  Maximum length: `200`
+
+  <br />
+
+- **deviceId** <font color = ' #7d8793'>String</font>
+
+  If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistics.
+  Note that this parameter must be passed if you are using the secondery merchant function, this parameter must be passed.
+
+  Maximum length: `200`
+
+  <br />
+
+- **failCode** <font color = ' #7d8793'>String</font>
+
+  If the order status is `FAILURE`, the code to identify the exact reason.
+
+  Example value: 62002
+
+  <br />
+
+- **failDes** <font color = ' #7d8793'>String</font>
+
+  If the order status is `FAILURE`, the failure reason.
+
+  Example value: Failed orders cannot be cancelled or refunded
+
+  <br />
+
+- **reserved** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+  The PayBy's unique identify number of the order.
+
+  Example value: 131658300517875854
+
+  <br />

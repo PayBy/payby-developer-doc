@@ -1,0 +1,8 @@
+{
+  "label": "PayBy App Oauth",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "OAuth 2.0 allows users to share specific PayBy data with an application while keeping other information private."
+  }
+}

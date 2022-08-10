@@ -1,0 +1,293 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 6
+---
+import AcquireOrder from "../OrderCreation/_acquire-order.mdx";
+
+
+# Cancel Order
+
+If the payment result is not returned for a long time, you can use this interface to cancel the order. However, PayBy only supports cancellations when the order is in the `CREATED` status, and the order status will be updated to `FAILURE` after PayBy processed the cancellation request successfully.
+
+If the order status has been updated to `PAID_SUCCESS` or `SETTLED` when the cancellation was initiated, PayBy will reject this  request. It is recommended to use `Revoke` or `Refund` interface.  
+
+<br/>
+
+### API URL
+
+Staging: https://uat.test2pay.com/sgs/api/acquire2/cancelOrder
+
+Production: https://api.payby.com/sgs/api/acquire2/cancelOrder
+
+<br/>
+
+### Request 
+
+#### Http Header
+
+---
+
+**Content-Language**    <font color = '#7d8793'>String</font> 
+
+The language in which the response message will be used, currently only English is supported.
+
+Example value: en
+
+Maximum length: `10`
+
+<br/>
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+Requests should be signed using private-key cryptography. This allows the payment gateway to verify that an incoming request is really from your application.
+
+<br/>
+
+**Partner-Id**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+The merchant id of your account. 
+
+Example value: 200001200101
+
+Maximum length: `12`
+
+<br/>
+
+#### Http Body
+
+---
+
+**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+Example value: 1581493898000
+
+<br/>
+
+**bizContent**   <font color = ' #7d8793'>Object</font>  
+
+> You can use either `merchantOrderNo`  or `orderNo` to specify an order. But you can't use the two parameters at the same time.
+
+- **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The merchant's referece number of the request. Used to track every request.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+<br/>
+
+- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The PayBy's unique identification number of the order. 
+
+  Example value: 131658300517875854
+
+<br/>
+
+#### Request sample
+
+```json
+Http Header  
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "MH8c9++jlzo0WBLJxNcbXxtyuAsE0EJzYtgnOsLDTrkG9rnF+tAf1NCDnJxUla0gQDQA5hjxMHKv42eZYrC/QR4cRvqSsnaUjtfOKbWcPEi4s6EcV/dHN0xPvDh5SPr9yAqrR44JRWzdXtG4P3zre57RbvXrhxZpXAkrwO0nXI4vMuKl1WsKSU0sdVqQx+v5cKXo8rK/iGGypLvH3VDya7m4ESo/GIvVanwyvItOZk/bY+L4KeZ+uuRNTXStYeBc4j4Oq1OrbYb0DwvDOijYl1qUt1pkZb5FWMfj8il0HQvbfhmMWRPsWeUObKJJfHJZNiwdV4SAWoHGtivw3/vu6A==",
+    "Partner-Id": "200000000888"
+}
+
+Http Body
+{
+    "requestTime": 1581422748669,
+    "bizContent": {
+        "merchantOrderNo": "M172475858661"
+    }
+}
+```
+
+<br/>
+
+### Response
+
+#### Http Header
+
+---
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+**head** 
+
+- **applyStatus**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
+
+  The result of the request. The possible values are:
+
+  `SUCCESS `- Application successful.
+  `FAIL` - Application failed. Check the `code`  and `msg` for exact reason.
+  `ERROR` - Application error. The signature verification failed. Please check whether the private key used for the signature and the public key uploaded on the PayBy portal are one key pair.
+
+<br/>
+
+- **code**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  Response Codes. View the [resconse codes](#response code) section to know all the possible results.
+
+  Example value: 0
+
+  <br/>
+
+- **msg**   <font color = ' #7d8793'>String</font>   
+
+  Description of this code. View the [resconse codes](#response code) section to know all the possible results.
+
+  <br/>
+
+- **traceCode**   <font color = ' #7d8793'>String</font>   
+
+  No special meaning, PayBy internally used to locate the error.
+
+  <br/>
+
+**body** 
+
+**Notice **:Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+
+- **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
+
+  <details>
+  <summary>The attributes are:</summary>
+    <AcquireOrder />
+  </details>
+
+- **interactionParams**  
+
+	In different payment scenarios, PayBy may return different parameters, allowing the merchant system and PayBy continue to interact to complete the order.
+
+	- **tokenUrl**   <font color = ' #7d8793'>String</font> 
+
+		Appears only in the following payment scene. 
+
+		`PAYPAGE`. A link that redirects the payer to the paypage.
+
+		`INAPP`. A link that redirects the payer to the paypage or the chosen E-wallet.
+
+		`DYNQR`. A link that redirects the payer to the paypage.
+
+		`JSAPI`. A link that redirects the payer to the checkout within the APP.
+
+		<br/>
+
+	- **deepLink**   <font color = ' #7d8793'>String</font> 
+
+		Appears only in `EWALLET` payment scene. 
+
+		When the payer chooses to open another e-wallet for payment at the merchant's payment page, PayBy will return a link to redirect the payer to the e-wallet's checkout.
+
+		<br/>
+
+	- **threeDSecureDom**    <font color = ' #7d8793'>String</font> 
+
+		Appears only in `DIRECTPAY` payment scene. 
+
+		If the merchant decides or PayBy's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
+
+		<br/>
+
+	> The `AUTODEBIT`  and `QRPAY `payment scene don't have  `interactionParams`.
+
+<br/>
+
+#### Response sample
+
+```json
+Http Header
+{
+    "sign": "XBRRQzTFvIKPE4bhBLKXF23RBeJn7WytxwhQXutCTZgO7NmzVE0YufjbSUSFKB5Eg6EtrVMVFM/FmTSSI/hWBJnk0j8rBxb+K3FlplTw1ydStM7upkvxLOe2uoOkac8FFXZIvjRWDNY7+VXwo40yI33Ct3YLTwu5kQHhVCEf6ClvnkTynXuy6hxALFsbJchKOZNbqm5WA24x2VtFbNe+jz+CRwD4MD8xg6npPMwfTc0b4sZ7SkUAKYlttxm+nO9qFjczbp55R7LdajxfCXxgpTp0hc576pwo2AqyNDcMjzunynX+AR7pzDqwkgC1NIc/eax67HPq/X+v/T8t671sHg=="
+}
+
+Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "1127"
+    },
+    "body": {
+        "acquireOrder": {
+            "merchantOrderNo": "M172475858661",
+            "orderNo": "131422372621002238",
+            "status": "FAILURE",
+            "product": "Basic Payment Gateway",
+            "totalAmount": {
+                "currency": "AED",
+                "amount": 21.74
+            },
+            "payeeMid": "200000004021",
+            "expiredTime": 1581429572587,
+            "notifyUrl": "http://www.yoursite.com",
+            "subject": "Your subject",
+            "requestTime": 1581422372587,
+            "accessoryContent": {
+                "amountDetail": {
+                    "discountableAmount": {
+                        "currency": "AED",
+                        "amount": 2.31
+                    },
+                    "amount": {
+                        "currency": "AED",
+                        "amount": 20.65
+                    },
+                    "vatAmount": {
+                        "currency": "AED",
+                        "amount": 1.09
+                    },
+                    "tipAmount": {
+                        "currency": "AED",
+                        "amount": 0.02
+                    }
+                },
+                "goodsDetail": {
+                    "body": "Gifts",
+                    "categoriesTree": "CT12",
+                    "goodsCategory": "GC10",
+                    "goodsId": "GI1005",
+                    "goodsName": "candy flower",
+                    "price": {
+                        "currency": "AED",
+                        "amount": 10.87
+                    },
+                    "quantity": 2,
+                    "showUrl": "http://www.yourshop.com/index.htm"
+                },
+                "terminalDetail": {
+                    "operatorId": "OP10001",
+                    "storeId": "SI1002",
+                    "terminalId": "TI10000",
+                    "merchantName": "candy home",
+                    "storeName": "lovely house"
+                }
+            },
+            "paySceneCode": "PAYPAGE",
+        }
+    }
+}
+```
+

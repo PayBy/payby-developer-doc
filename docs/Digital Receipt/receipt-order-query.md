@@ -1,0 +1,509 @@
+---
+sidebar_position: 3
+---
+
+
+
+# Retrieve receipt detail
+
+Retrieves the receipt detail with order number.
+
+<br/>
+
+
+#### API URL
+
+Staging : https://uat.test2pay.com/sgs/api/digitalReceipt/getOrder
+
+Production : https://api.payby.com/sgs/api/digitalReceipt/getOrder
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+**Content-Language**    <font color = '#7d8793'>String</font> 
+
+The language in which the response message will be used, currently only English is supported.
+
+Example value: en
+
+Maximum length: `10`
+
+
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+Requests should be signed using private-key cryptography. This allows the payment gateway to verify that an incoming request is really from your application.
+
+
+
+**Partner-Id**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+The merchant id of your account. 
+
+Example value: 200001200101
+
+Maximum length: `12`
+
+
+
+#### Http Body
+
+---
+
+**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+Example value: 1581493898000
+
+
+
+**bizContent**   <font color = ' #7d8793'>Object</font>  
+
+You can use either `receiptNo`  or `orderNo` to specify an order. But you can't use the two parameters at the same time.
+
+- **receiptNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The merchant's referece number of the receipt. 
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+
+
+- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+  The PayBy's unique identify number of the order. 
+
+  Example value: 131658300517875854
+
+  Maximum length: `32`
+
+  
+
+#### Request sample
+
+```json
+Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "CCk1rcB+2kuF9PqLjukLQ3thcHIHeovlKN+q7HYn59aKaqHbsEjGCMg/e3h1dLbeMDO62liKS7mCB4O+l1dKdxXMzjG1sKgQ+UGmK/wD7QqF+W7iBio6ynYe4bscSc6sN66pNWh+4LIZ39mpPvQSXFTpeWVrPUyAwizskbreugxWkCWXYvmffGdZI/j4u4gFIht8VPWJJgL14c5wbGzPK0lTQsLBMajVghKIx4v3AfRHzvYYrxGqD8z6DRQcfnc5FOh4k9C5jo5d0x7gdFKNz8qZGHM3JI/EWJ4u2GVgWSEHCIsMbj0UQj2SCl/pB9BfCiWZIy1Jlo+dyqLpHRPceg==",
+    "Partner-Id": "200000000888"
+}
+
+Http Body
+{
+	"requestTime": 1631930578769,
+	 "bizContent":{
+        "receiptNo":"534298"
+    }
+}
+```
+
+
+
+### Response
+
+#### Http Header
+
+---
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+
+
+**body** 
+
+**<font color = '#f19938'>Notice </font>**: Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+
+- **receiptOrder**   <font color = ' #7d8793'>Object</font>
+
+  The attributes are:
+
+     - **receiverEmail**   <font color = ' #7d8793'>String</font>
+
+       The customer's email to receive digital receipt.
+
+       Example value: customer@email.com
+
+       Maximum length: `200`
+
+       <br/>
+
+  - **memberId**   <font color = ' #7d8793'>String</font>
+
+    The customer's PayBy member ID. The customer will receive a message with receipt information in the Payby app.
+
+    Example value: 10000000011
+
+    Maximum length: `12`
+
+    <br/>
+
+  - **receiverMobileNumber**   <font color = ' #7d8793'>String</font>
+
+    The customer's mobile number to identify his or her member id in PayBy. The customer will receive a message with receipt information in the Payby app.
+
+    Example value: +971-585800000
+
+    Maximum length: `32`
+
+    <br/>
+
+  - **orderNo**   <font color = ' #7d8793'>String</font>
+
+    The customer's PayBy member ID. The customer will receive a message with receipt information in the Payby app.
+
+    Example value: 10000000011
+
+    Maximum length: `12`
+
+    <br/>
+
+  - **partnerMid**   <font color = ' #7d8793'>String</font>
+
+    The customer's PayBy member ID. The customer will receive a message with receipt information in the Payby app.
+
+    Example value: 10000000011
+
+    Maximum length: `12`
+
+    <br/>
+
+  - **receipt**   <font color = ' #7d8793'>Object</font>
+
+    The content of receipt, the attributes are:
+
+       -  **type**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+          If you pass `Y`, the receipt will show `Tax Invoice` on it. If you pass `N`, the receipt will not show `Tax Invoice` on it. 
+
+          Example value: Y
+
+          <br/>
+
+       -  **name**   <font color = ' #7d8793'>String</font>
+
+          The store name.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **address**   <font color = ' #7d8793'>String</font>
+
+          The store address.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **tel**  <font color = ' #7d8793'>String</font>
+
+          The store contact number.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **email**  <font color = ' #7d8793'>String</font>
+
+          The store contact number.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **trn**   <font color = ' #7d8793'>String</font>
+
+          The merchant's Tax Registration Number. 
+
+          Example value: 100285640700001
+
+          Maximum length: `15`
+
+          <br/>
+
+       -  **receiptNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+          The number of this receipt in the merchant's system. Note that the number should be unique, and for different receipts the same receipt number cannot be passed.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **date**   <font color = ' #7d8793'>Timestamp</font>    <font color = '#f19938'>Required</font>
+
+          The date and the time the receipt generated.
+
+          Example value: 1581493898000
+
+          <br/>
+
+       -  **goodsList**   <font color = ' #7d8793'>List</font>
+
+          The attibutes of each item are: 
+
+          - **id**   <font color = ' #7d8793'>String</font>
+
+            The item's id.
+
+            Example value: New Apple iPhone 13 Pro (128GB) - Sierra Blue
+
+            Maximum length: `200`.
+
+            <br/>
+
+          - **name1**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>   
+
+            The item's name or description.
+
+            Maximum length: `200`.
+
+            <br/>
+
+          - **name2**   <font color = ' #7d8793'>String</font>
+
+            You may pass the  item's name in another language.
+
+            Maximum length: `200`.
+
+            <br/>
+
+          - **quantity**   <font color = ' #7d8793'>String</font>   
+
+            The quantity of this item the customer purchased.
+
+            Maximum length: `200`.
+
+            <br/>
+
+          - **amount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>   
+
+            The unit price of this item.
+
+            Maximum length: `200`.
+
+            <br/>
+
+       -  **count**   <font color = ' #7d8793'>Integer</font>
+
+          Total quantity of all items.
+
+          Maximum value: `100,000`.
+
+          <br/>
+
+       -  **totalBeforeVat**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+
+          The payable amount before tax.
+
+          <br/>
+
+       -  **vatAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+
+          The tax amount.
+
+          <br/>
+
+       -  **vatRate**   <font color = ' #7d8793'>Decimal</font>    <font color = '#f19938'>Required</font>
+
+          The tax rate. For the rate of 5%, pleasse pass `5`.
+
+          Minimum value: `0`
+
+          Maximum value: `100`
+
+          <br/>
+
+       -  **totalAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+
+          The payable amount after tax.
+
+          <br/>
+
+       -  **store**   <font color = ' #7d8793'>String</font>
+
+          The addtional information of the store.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **counter**   <font color = ' #7d8793'>String</font>
+
+          On which counter the payment was made.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **pos**   <font color = ' #7d8793'>String</font>
+
+          On which POS machine the payment was made.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **cashier**  <font color = ' #7d8793'>String</font>
+
+          Which cashier collected the money when the payment was made. Pass the id or name of the cashier.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **paymentChannel**  <font color = ' #7d8793'>String</font>
+
+          The payment method the customer used when the payment was made. 
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **paymentId**   <font color = ' #7d8793'>List</font>
+
+          The order number or payment order number.
+
+          Maximum length of each payment id: `32`
+
+          <br/>
+
+       -  **payAmount**   <font color = ' #7d8793'>Money</font>
+
+          The amount paid by the customer. 
+
+          <br/>
+
+       -  **changeAmount**   <font color = ' #7d8793'>Money</font>
+
+          Change amount given by cashier to customer.
+
+          <br/>
+
+       -  **refundNo**   <font color = ' #7d8793'>String</font>
+
+          If the transaction needs to be refunded, this number can be used to identify the original transaction.
+
+          Maximum length: `200`
+
+          <br/>
+
+       -  **notes**   <font color = ' #7d8793'>String</font>
+
+          Merchant's notes for the transaction.
+
+          Maximum length: `200`
+
+          <br/>
+
+#### Response sample
+
+```json
+Http Header
+{
+  "sign": "TmdNrIM01QRX4KTU7CQFgrO3+e3Xcqq3MmITZgQuQzdcM9b5X71sCUZq7Hkm42gzqnBzy84k/xuSkMT2FVAQ2qbjSbx1U/3WOeRl2KddOW3NSz/XhO+dH3EHFoRN7/sS6uG6fqV/SVnQAkPqMCbpr6Hw74wac6O0slcbYwZd69mbSlE5EmNCmqyHgQfh7slwqd7K+FNXk9CX+FYx9FN3WpR7eZUpVQt4636CfNMPDnDQfNGC1fimoAD8MZZKeCK1Ssn6MM2FLh+ADAfPrwey2Ab/3QlsE8iz643mB8WIfqDpACbUDdsZ79D8F8b6nducWU7BAw/E6VrEdvwNlkaSAg=="
+}
+
+Http Body
+{
+    "body":{
+        "receiptOrder":{
+            "memberId":"100000329946",
+            "orderNo":"911631930376004613",
+            "partnerMid":"200000030907",
+            "receipt":{
+                "address":"TCA,Abu Dhabi",
+                "cashier":"Sajjad Ajij",
+                "changeAmount":{
+                    "amount":0,
+                    "currency":"AED"
+                },
+                "count":2,
+                "counter":"6",
+                "date":1631930376223,
+                "email":"cutomercareauh@ae.lulumea.com",
+                "goodsList":[
+                    {
+                        "amount":{
+                            "amount":13.2,
+                            "currency":"AED"
+                        },
+                        "id":"9947345013207",
+                        "name1":"Norwegian Salmon Steak",
+                        "name2":"ستيك السلمون النرويجي",
+                        "quantity":1
+                    },
+                    {
+                        "amount":{
+                            "amount":2,
+                            "currency":"AED"
+                        },
+                        "id":"99473450132018",
+                        "name1":"Coca cola 350ml",
+                        "name2":"كوكا كولا 350 مل",
+                        "quantity":5
+                    }
+                ],
+                "name":"LuLu Express Fresd Market",
+                "notes":"Keep bill for exchange within 7 days.Valid only at issued store.*T&C Apply.Thanks you for shopping. Shop online at www.luluhypermarket.com",
+                "payAmount":{
+                    "amount":23.2,
+                    "currency":"AED"
+                },
+                "paymentChannel":"CASH",
+                "pos":"2",
+                "receiptNo":"534298",
+                "refundNo":"662142002053429820210730153140",
+                "store":"2142",
+                "tel":"02 3090550",
+                "totalAmount":{
+                    "amount":22.3,
+                    "currency":"AED"
+                },
+                "totalBeforeVat":{
+                    "amount":22.3,
+                    "currency":"AED"
+                },
+                "trn":"100228723100003",
+                "type":"Y",
+                "vatAmount":{
+                    "amount":1.1,
+                    "currency":"AED"
+                },
+                "vatRate":5
+            },
+            "receiverEmail":"testdemo@payby.com",
+            "receiverMobileNumber":"+971-585660747"
+        }
+    },
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"952135"
+    }
+}
+```
+
+

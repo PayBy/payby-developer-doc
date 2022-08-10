@@ -1,0 +1,185 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 6
+---
+
+import HttpHeader from './_http-header.md'
+import BizContent from './_biz-content.mdx'
+import ResponseHead from '../Refund/_response-head.mdx'
+import TransferToBankOrder from './_transfer-to-bank-order.mdx'
+
+# Transfer to bank
+
+Before using this API, please use `Get fundout ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
+
+If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
+
+<br/>
+
+### API URL
+
+Staging : https://uat.test2pay.com/sgs/api/transfer/placeTransferToBankOrder
+
+Production : https://api.payby.com/sgs/api/transfer/placeTransferToBankOrder
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+<HttpHeader/>
+
+#### Http Body
+
+---
+
+**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+Example value: 1581493898000
+
+<br/>
+
+**bizContent**   <font color = ' #7d8793'>Object</font>  
+
+  <details>
+  <summary>The attributes are:</summary>
+    <BizContent />
+  </details>
+
+
+#### Beneficiary type
+
+Required and optional fiels for different beneficiary types.
+
+|          | holderName | iban      | swiftCode | beneficiaryAddress | accountNo | bankName | fedwireCode | branchName | intermediaryBank |
+| -------- | ---------- | --------- | --------- | ------------------ | --------- | -------- | ----------- | ---------- | ---------------- |
+| IBAN     | Required   | Required  | Optional  | Required           | Forbidden | Optional | Forbidden   | Optional   | Optional         |
+| BBAN     | Required   | Forbidden | Required  | Required           | Required  | Optional | Forbidden   | Optional   | Optional         |
+| FED_WIRE | Required   | Forbidden | Forbidden | Required           | Required  | Optional | Required    | Optional   | Optional         |
+
+<br/>
+
+
+#### Request sample
+
+```json
+Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "S5Wr6x9Po1SX3nm4kRJyTueUMbnmsPGMlMjc3PcoyNyP0G5BuRAwauYjTJLeto6Bu1+893zCGmj201mjrvcXP4v/uMzQxRav5PBMp9VuQ+3dOFGclQAwr8cFAKuBDHhGAAkw1iVpdC8ZZLGl/jRUv3PCiZh6VyOLnrK7ZIevB/TetQSzCmN1xDIQo8mpDYz7YY/jSzYBnD17ePvkr4qQOWNUh7FF2nd29lo9KOQl5tJVoqT/D+PVSlZeuGr+wxBYCAyGqbVXXSAGcwF1egF6ISLJ29jpHcX/LACXxF/uf5cdzbudwPB2X0wtRw9WnowY3RUq34sidoF4DIShXVFHAg=="
+}
+
+Http Body
+{
+    "bizContent":{
+        "amount":{
+            "amount":0.1,
+            "currency":"AED"
+        },
+        "beneficiaryAddress":"ImHDvH9bcOzm1dzlywKk2xZdQzGIuZqm1gxvt+CG4N3S4ShI1WfDuEzkTgx/qjS1LovKsztFs35TbORQ84LaKo9UyzBjhrfqaUkGxcTWc9xo2H/x4oGX4oTt+p5LCeKWciyeNITK+J11cEoppCCvjhwXK64b7cAuIgm+YTFs2P/65bD/SGahWht9tg8aDqNDltZs/JLhjzFSvz65ZpREeKPM9f2eth0tnB2eWaLZEW5JZM+Y9lCD2nvFkTBMaEJFRAoTMiHPGba1CMm0SwEkjYhZhfSDfqLyZ1+IhxOz2xqjgwJi4noxd9pg5yRX/qzLMdZBT7rF+r1tj5Ji4ATDXw==",
+        "holderName":"nP7Yq9e+AJQVbhMtiAcUU0wUZtL5yAb2w95D1Xjvw+FvP4dMrAGQP4mEQT3EQHcl+jAVAS0mej3NJYAVa9ZemWtACRFiUV9c9ub0v8lYtoooQ8AMRMZeSGDCieVTTHkq14Zfg/Xtymx5Pk2PHwhb++oQ5GYPLkoVSQZlBwqhTBiyywLkix03kVwazNxNI40QWjZ9mR+dUlGPASVU5RaOKXd/DNFuETRCUKXc10772kK+e2Bp1G3wmXY+jFQTJPwU38ikDrbilVmJ445LkQzA9MtWwVeh6bRROB2Ei7rBgr3LmTSiQhM6nBeJmNIX3xHf1L0i2sSIKuioaU64M3D6jw==",
+        "iban":"hnfMFYm0GZlIvi9fKOkPG1Yys7P3q7PeQ+lhw1umoPCptP59rCUzFxEcpsu9IGJY6HrGVgLgzlpfoFhfDQG5rwJewhjxGcCx9H2ywzBEogVjpquOIVLF4WCD5CZZE3bjqr27Cy3CyKvwCfxC7HCBgiPZAdwM2oHdvJCkHBeUDL58aGBaJnzPiBetLXDyrh4t0od6vrF26eoh/MseaiXnFrykBA9oQZsU+1HZP5FoMjyqDZVFw/4N7Py8dQ3gmw/Y2HMdZvQIUHIi7Nc9UiF9YxTyV7YdVLMSZGwTwObVTYrD2d73bkQ4bFr7Hctu6ERJYutrd266AiSaHtGf60tcZg==",
+        "memo":"Bonus",
+        "merchantOrderNo":"d98db926-5ad1-4046-9c51-3c9b7283b44e",
+        "networkCode":"LOCAL",
+        "notifyUrl":"http://yoursite.com/api/notification",
+        "swiftCode":"BBMEAEAD"
+    },
+    "requestTime":1646277045337
+}
+```
+
+<br/>
+
+### Response
+
+#### Http Header
+
+---
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+**head**
+
+  <details>
+  <summary>Show header:</summary>
+    <ResponseHead />
+  </details>
+
+
+**body** 
+
+**<font color = '#f19938'>Notice</font>**
+
+Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+
+- **transferToBankOrder**   <font color = ' #7d8793'>Object</font>
+
+  <details>
+  <summary>The attributes are:</summary>
+    <TransferToBankOrder />
+  </details>
+
+
+#### Response sample
+
+```json
+Http Header
+{
+    "sign": "Yv+C2lOQmfERdm5GF9b2V4Y98HmX/6CFyconeOW36AoPqcb7InRcP9E5GnvJLfMoCScuNP4FBdJ5tJpL0A7yPHUMfxARi05jFRSMG97JJazDbWTbRkNM1ZupmTubhUvxvRCgvJp1k0c5yrHph+F+++W5eYho92xnkNgd62BS27i0iDRGzGSmsaPpK7MFcdlvnbbnmDZZJ0LH6RhYiJLYKl+znllQx3jNfCRjV28o22FZ35Q43mZTsS4uAZWbZ/KfaqWoV3sN62Cjj8DSg3mD6GCGWSVbxLq58DUxAq+6GwJ7Gj0Dc9nMXP3gnFW7dodQ9AjL2iHnH6Zh1Pw2D5/ung=="
+}
+
+Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "0837"
+    },
+    "body":{
+        "transferToBankOrder":{
+            "merchantOrderNo":"e24ef58b-a07f-475a-9716-daf5026a8e8e",
+            "orderNo":"131646278513003023",
+            "status":"CREATED",
+            "holderName":"7b4d8739a0ef0284ba0faf9b79002e3d3096a09be85ae9b503d89bd2fdc2a583",
+            "iban":"09599cc57d9126a7759dc4b5d0866eb95c2dfbcf02812a94a5c1c0937cccbfc8",
+            "swiftCode":"BBMEAEAD",
+            "amount":{
+                "amount":0.1,
+                "currency":"AED"
+            },
+            "notifyUrl":"http://yoursite.com/api/notification",
+            "memo":"Bonus",
+            "requestTime":1646278513375,
+            "product":"Transfer To Bank",
+            "paymentInfo":{
+                "payerFeeAmount":{
+                    "amount":5,
+                    "currency":"AED"
+                },
+                "arrivalTime":1646278514000
+            },
+            "beneficiaryAddress":"ec36f7ed0f1095595da9a506c1cb352c9b89b69c4ceb2c562128c7241661afde",
+            "networkCode":"LOCAL"
+        }
+    }
+}
+```
+

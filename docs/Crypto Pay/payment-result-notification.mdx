@@ -1,0 +1,333 @@
+---
+sidebar_position: 5
+toc_max_heading_level: 6
+---
+
+import ResponseHead from '../Refund/_response-head.mdx'
+import PaymentInfo from './_ payment-info.mdx'
+
+
+
+# Payment result notification
+
+If the `notifyUrl` parameter is passed in the order creation request to receive payment notifications, Payby will send a message to the address when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
+
+<br/>
+
+ **<font color = '#f19938'>Notice </font>**
+
+1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
+2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
+3.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+
+
+#### Http Body
+
+---
+
+**notify_timestamp**  <font color = ' #7d8793'>Timestamp</font>  <font color = '#f19938'>Required</font>
+
+The timestamp when Payby sent the request.
+
+Example value: 1586849271877
+
+<br/>
+
+**notify_id**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The unique identification number of this notification within the Payby system.
+
+Example value: 202004140007474501
+
+<br/>
+
+**acquireOrder**   <font color = ' #7d8793'>Object</font>
+<details>
+
+<summary>  The attributes are:</summary>
+
+  - **requestTime**   <font color = ' #7d8793'>Timestamp</font>    <font color = '#f19938'>Required</font>
+
+       Request time passed by the merchant when placing the order.
+
+       Example value: 1581493898000
+       
+       <br/>
+
+  - **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    The merchant's referece number of the request. Used to track every request.
+
+    Example value: M965739182419
+
+    Maximum length: `64`
+
+    <br/>
+
+  - **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    The PayBy's unique identification number of the order. 
+
+    Example value: 131658300517875854
+
+    <br/>
+
+  - **status**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
+
+    The possible values are:
+
+    `CREATED`. The order has been created.
+
+    `PAID_SUCCESS`.  The order has been successfully paid.
+
+    `SETTLED`. The order has been paid and the fund has been settled to merchant's account.
+
+    `FAILURE`. The order has been cancelled or expired.
+
+    <br/>
+
+  - **paymentInfo**   <font color = ' #7d8793'>Object</font>   
+
+    <details>
+      <summary>The attributes are:</summary>
+
+      <PaymentInfo />
+      
+    </details>
+
+  - **product**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    The product name related to the payment scene parameter used in the order. This product name is only used for PayBy internal classification.
+
+    Example value: Crypto Basic Payment Gateway
+
+    <br/>
+
+  - **totalAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+
+    The order amout intended to collect from the payer.
+    
+    <br/>
+
+  - **payeeMid**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    The payee's member ID in PayBy.
+
+    Example value: 200001200101
+
+    <br/>
+
+  - **expiredTime**   <font color = ' #7d8793'>TimeStamp</font>    <font color = '#f19938'>Required</font>
+
+    The order expiration time, after which the payment cannot be completed.
+
+    Example value: 1581493898000
+
+    <br/>
+
+  - **notifyUrl**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    To receive asynchronous notifications of order status updates, the merchant can pass the notify URL in the request to place order.
+
+    Example value: https://www.yoursite.com
+
+    <br/>
+
+  - **subject**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    Description of this order. 
+
+    Example value:  iPhone.
+
+    <br/>
+
+  - **accessoryContent**   <font color = ' #7d8793'>String</font>   
+
+    Used for storing additional information about the order.
+    
+    <br/>
+
+  - **paySceneCode**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
+
+    Payment scene you are going to use. For this scenario, the code is `PAYPAGE`.
+
+    <br/>
+
+  - **paySceneParams**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+    Different payment scenarios need to pass different scenario parameters. For this scenario, your need to pass `redirectUrl`.
+    
+    <br/>
+
+  - **deviceId**   <font color = ' #7d8793'>String</font>  
+
+    If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistic.
+    Note that this parameter must be passed if you are using the secondary merchant function.
+    
+    <br/>
+
+  - **failCode**   <font color = ' #7d8793'>String</font>    
+
+    If the order status is `FAILURE`, the code to identify the exact reason.
+
+    Example value: 504
+
+    <br/>
+
+  - **failDes**   <font color = ' #7d8793'>String</font>   
+
+    If the order status is `FAILURE`, the failure reason.
+
+    Example value: SERVICE_TIMEOUT
+    
+    <br/>
+
+  - **revoked**   <font color = ' #7d8793'>Boolean</font>    <font color = '#f19938'>Required</font>
+
+    If true, it means that the payment has been made but then cancelled.
+
+    <br/>
+
+  - **reserved**   <font color = ' #7d8793'>String</font>  
+
+    Merchant's notes for the order.
+
+    Example value: June campaign order.
+
+    Maximum length: `200`
+    
+    <br/>
+
+</details>
+
+
+
+**<font color = 'grey'>notify_time</font>**  <font color = ' #7d8793'>String</font>  
+
+The parameter is deprecated. Please use the `notify_timestamp` instead.
+
+<br/>
+
+**<font color = 'grey'>_input_charset</font>**  <font color = ' #7d8793'>String</font>  
+
+The parameter is deprecated. 
+
+<br/>
+
+
+#### Request sample
+
+```json
+Http Header
+{
+    "Content-Type": "application/json",
+  	"Sign": "NshUvvVM3f/2eYcHyel7w7xDyzX1o7azydZ3ctGVWEghE4MCDcrEfO7LHmuDCQO4tqLwXwIv4pJfPH37X/o4V8q9QaE+gcPPvzO2xlT/Fksocd+gBoBWGz6SaEmD3eKQ7J9SU3+sKLOre9BomzJ5CuzsFAbBrZVw1+0MiwE3NTJvKEL3CW6LhHj2/1bnFMrQeBXP0z2LoqqODORG5Sgy8W9EPlMityjGOtPGMPj6iOK6il1KIeGRBW1wBeP0ZP/n8hwsob/fLygJ8UhB/kOAICXRrA+uo2Z4JJXhuX9P+C0BufPWHIdwq7ZdAvcxmSXFjtwIHuY9JFNWdTBZhxNw3g=="
+}
+
+Http Body
+{
+        "body": {
+            "notify_time": "20211119182223",
+            "acquireOrder": {
+                "product": "Crypto basic Payment Gateway",
+                "orderNo": "131637331640608241",
+                "paySceneCode": "PAYPAGE",
+                "subject": "crypto bate",
+                "revoked": "false",
+                "deviceId": "TI100999999999900",
+                "merchantOrderNo": "M102628092357",
+                "expiredTime": 1637338837978,
+                "requestTime": 1637331637978,
+                "totalAmount": {
+                    "amount": 0.13,
+                    "currency": "BUSD"
+                },
+                "payeeMid": "200001200101",
+                "notifyUrl": "http://qa.test2pay.com/api/notification",
+                "paymentInfo": {
+                    "payChannel": "BINANCE",
+                    "paidTime": 1637331741860,
+                    "payerFeeAmount": {
+                        "amount": 0.0,
+                        "currency": "BUSD"
+                    },
+                    "paidAmount": {
+                        "amount": 0.13,
+                        "currency": "BUSD"
+                    },
+                    "payerMid": "anonymousMember"
+                },
+                "status": "PAID_SUCCESS"
+            },
+            "_input_charset": "UTF-8",
+            "notify_timestamp": 1637331743833,
+            "notify_id": "202111190340008301"
+        }
+}
+```
+
+<br/>
+
+### Response 
+
+Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
+
+<br/>
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+#### Http Body
+
+---
+
+**response**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+Example value: Success
+
+<br/>
+
+#### Response sample
+
+```json
+Http Header
+{
+	"Content-Type": "application/json; charset=UTF-8" 
+}
+
+Http Body
+{
+  SUCCESS
+}
+```
+

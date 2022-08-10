@@ -1,0 +1,158 @@
+---
+sidebar_position: 9
+toc_max_heading_level: 6
+---
+
+import RefundOrder from './_refund-order.mdx'
+
+
+
+# Refund result notification
+
+If the `notifyUrl` parameter is passed in the order creation request to receive payment notifications, Payby will send a message to the address when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
+
+<br/>
+
+ **<font color = '#f19938'>Notice </font>**
+
+1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
+2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
+3.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
+
+<br/>
+
+### Request
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+**notify_timestamp**  <font color = ' #7d8793'>Timestamp</font>  <font color = '#f19938'>Required</font>
+
+The timestamp when Payby sent the request.
+
+Example value: 1586849271877
+
+<br/>
+
+**notify_id**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The unique identification number of this notification within the Payby system.
+
+Example value: 202004140007474501
+
+<br/>
+
+**refundOrder**   <font color = ' #7d8793'>Object</font>  <font color = '#f19938'>Required</font>
+
+
+  <details>
+    <summary>The attributes are:</summary>
+    <RefundOrder/>
+  </details>
+
+#### Request sample
+
+```json
+{
+        "header": {
+            "Host": "qa.test2pay.com",
+            "X-Forwarded-For": "172.16.12.81",
+            "Connection": "close",
+            "Content-Length": "420",
+            "X-Real-Ip": "172.16.12.81",
+            "X-Forwarded-Proto": "http",
+            "X-Forwarded-Port": "80",
+            "X-Forwarded-Host": "qa.test2pay.com",
+            "Partner-Id": "200001200101",
+            "Sign": "QarRYksruC/zOihh99uyo8JzHqwyX7iZsp4W5D2iVetRNRxa1T5XqCN8WsMFf+lGHFZ6JYxyEJFxA1mHFhb4/4Is7HlndHalnMxBhkFvzQnabBAvwz5zPup+37x3wIm2TBQhQGY4ScMkKRKgncLF11+bckyo7qy2h/doPykRWMB4wiX7OHOI0/CKZdF3FPcuImVCK3uP7NFtLBunfABRPDku5OXVnDbXYfXM+KYtBWHW4iUV+iiSago/2/w+5e4CG6oPu8rd0b21Puyp4VNHj1lUp/uQ8LKhEQmLdVh+I7VIXF6nBnEhecGQhSDT2HicrcymJidOyfHCv4XQ7ihTGQ==",
+            "Request-Id": "22438.97.16370540210290001",
+            "Prod-Sw6": "1-MjI0MzguOTcuMTYzNzA1NDAyMTAyOTAwMDE=-MjE4NjguNDM3LjE2MzczMzI0Njk1MTI2MTYy-2-21868-22438-MTE5Mw==-I1RocmVhZC9vcmcuYXBhY2hlLnNreXdhbGtpbmcuYXBtLnRvb2xraXQudHJhY2UuUnVubmFibGVXcmFwcGVyL3J1bg==-I1RocmVhZC9vcmcuYXBhY2hlLnNreXdhbGtpbmcuYXBtLnRvb2xraXQudHJhY2UuUnVubmFibGVXcmFwcGVyL3J1bg==",
+            "Content-Type": "application/json; charset=UTF-8",
+            "User-Agent": "Apache-HttpClient/4.5.8 (Java/1.8.0_72)",
+            "Accept-Encoding": "gzip,deflate"
+        },
+        "body": {
+            "notify_time": "20211119183429",
+            "_input_charset": "UTF-8",
+            "notify_timestamp": 1637332469512,
+            "refundOrder": {
+                "reason": "refund reason",
+                "amount": {
+                    "amount": 0.12,
+                    "currency": "BUSD"
+                },
+                "orderNo": "131637332464634201",
+                "refundMerchantOrderNo": "M470993189317",
+                "reserved": "",
+                "notifyUrl": "http://qa.test2pay.com/api/notification",
+                "originMerchantOrderNo": "M956003460711",
+                "status": "REFUNDED_SETTLED"
+            },
+            "notify_id": "202111190340008821"
+        }
+}
+```
+
+
+
+### Response 
+
+Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
+
+<br/>
+
+#### Http Header
+
+---
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+#### Http Body
+
+---
+
+**response**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+Example value: Success
+
+<br/>
+
+#### Response sample
+
+```json
+Http Header
+{
+	"Content-Type": "application/json" 
+}
+
+Http Body
+{
+  SUCCESS
+}
+```
+

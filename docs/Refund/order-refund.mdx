@@ -1,0 +1,209 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 6
+---
+import ResponseHead from './_response-head.mdx'
+import RefundOrder from './_refund-order.mdx'
+import BizContent from './_biz-content.mdx'
+
+
+# Refund order
+
+Refunds a payment order that has been completed. You can refund either the full amount or a part of the payment amount. Funds will be refunded to the credit or debit card that was originally charged.
+
+<br/>
+
+### API URL
+
+Staging : https://uat.test2pay.com/sgs/api/acquire2/refund/placeOrder
+
+Production : https://api.payby.com/sgs/api/acquire2/refund/placeOrder
+
+<br/>
+
+### Request 
+
+#### Http Header
+
+---
+
+**Content-Language**    <font color = '#7d8793'>String</font> 
+
+The language in which the response message will be used, currently only English is supported.
+
+Example value: en
+
+Maximum length: `10`
+
+<br/>
+
+**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+Example value: application/json
+
+<br/>
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+Requests should be signed using private-key cryptography. This allows the payment gateway to verify that an incoming request is really from your application.
+
+<br/>
+
+**Partner-Id**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+
+The merchant id of your account. 
+
+Example value: 200001200101
+
+Maximum length: `12`
+
+<br/>
+
+#### Http Body
+
+---
+
+**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+Refund order request time. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+Example value: 1581493898000
+
+<br/>
+
+
+**bizContent** <span style={{color:" #7d8793"}}>Object</span>
+
+  <details>
+  <summary>Include all following parameters:</summary>
+    <BizContent />
+  </details>
+
+
+
+#### Request sample
+
+```json
+Http Header
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "sign": "aMs582GhLeRv4fL3xqw7nN4dlzWS+ZVzdsNXT6rKwPpj7qOM4Y7qZBP3Yl6HogILy4IyX1tp8M7D92rK37hUgJg814odd1INIuy4l+KTRPA1Y3F8y0hVGXak0ddeVcOM3XNN+YEhvPClBx4EpmfWVqY3A2qNJTo3ugwr6uZiVGA38OjHRLZthGa+5nea0DtLaZYQnOGWaCI6fPIBZ7qr9HTiVkIsAp3N4m4cHR+3Rvpdbzu2TZoScA358D9wGmF5UOkbHCjwNV03I3O8HzaKUqMe4jnXZ+lJ0TMmxmqLrcMyMztJjZMQB9S4lXMW2+TqMrdNgLQv3GLiQ9IFvhUVEg==",
+    "Partner-Id": "200000000888"
+}
+
+Http Body
+{
+    "requestTime": 1581405399656,
+    "bizContent": {
+        "refundMerchantOrderNo": "M818494241569",
+        "originMerchantOrderNo": "M965739182419",
+        "amount": {
+            "currency": "AED",
+            "amount": 0.01
+        },
+        "operatorName": "zxy",
+        "reason": "refund"
+    }
+}
+```
+
+<br/>
+
+### Response
+
+#### Http Header
+
+---
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+#### Http Body
+
+---
+
+
+**head**
+
+  <details>
+  <summary>Show header:</summary>
+    <ResponseHead />
+  </details>
+
+
+**body** 
+
+**<font color = '#f19938'>Notice</font>**
+
+Body is returned only when `applystatus` = `success`, and `code` = `0`.
+If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+
+- **refundOrder** <span style={{color:" #7d8793"}}>Object</span>
+
+  <details>
+  <summary>The attributes are:</summary>
+    <RefundOrder />
+  </details>
+  
+- **refundSummary**   <font color = ' #7d8793'>Object</font>
+
+     - **acquireAmount**   <font color = ' #7d8793'>Money</font>  <font color = '#f19938'>Required</font>
+
+       The payment amount for the payment order.
+       
+       <br/>
+       
+     - **remainRefundAmount**   <font color = ' #7d8793'>Money</font>  <font color = '#f19938'>Required</font>
+     
+       After this refund, how much refundable amount is left.
+       
+       <br/>
+
+#### Response sample
+
+```json
+Http Header
+{
+    "sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+
+Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "1127"
+    },
+    "body": {
+        "refundOrder": {
+            "refundMerchantOrderNo": "M818494241569",
+            "orderNo": "191405406113002297",
+            "originMerchantOrderNo": "M965739182419",
+            "status": "SUCCESS",
+            "amount": {
+                "currency": "AED",
+                "amount": 0.01
+            },
+            "reason": "refund"
+        },
+        "refundSummary": {
+            "acquireAmount": {
+                "currency": "AED",
+                "amount": 1.01
+            },
+            "remainRefundAmount": {
+                "currency": "AED",
+                "amount": 1
+            }
+        }
+    }
+}
+```
+

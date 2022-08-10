@@ -1,0 +1,106 @@
+- **refundMerchantOrderNo** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+  The merchant's referece number of the request. Used to track every request.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+  <br />
+
+> You can use either `merchantOrderNo` or `orderNo` to specify the payment order to refund. But you can't use the two parameters at the same time.
+
+- **originMerchantOrderNo** <font color = ' #7d8793'>String</font>
+
+  The merchant order no. of the payment order.
+
+  Example value: M965739182419
+
+  Maximum length: `64`
+
+  <br />
+
+- **originOrderNo** <font color = ' #7d8793'>String</font>
+
+  The PayBy's unique identification number of the payment order.
+
+  Example value: 131658300517875854
+
+  Maximum length: `64`
+
+  <br />
+
+- **amount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+
+  Amount to refund. The attributes are:
+
+  - **amount** <font color = ' #7d8793'>Decimal(12,2)</font> <font color = '#f19938'>Required</font>
+
+    Allow 12 digits before the decimal point. Allow 2 digits after the decimal point.
+
+    Example value: 12.34
+
+    <br />
+
+  - **currency** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+
+    The code to identifie the order currency. Currently only AED is supported.
+
+    Example value: AED
+
+    <br />
+
+- **notifyUrl** <font color = ' #7d8793'>String</font>
+
+  To receive asynchronous notifications of order status updates, the merchant can pass the notify URL in the request.
+
+  Example value: https://www.yoursite.com
+
+  Maximum length: `200`
+
+  <br />
+
+- **operatorName** <font color = ' #7d8793'>String</font>
+
+  Name of the employee who initiated the refund order.
+
+  Example value: Daisy Johansson
+
+  Maximum length: `200`
+
+  <br />
+
+- **reason** <font color = ' #7d8793'>String</font>
+
+  The reson to refund the payment order.
+
+  Maximum length: `64`
+
+  <br />
+
+- **deviceId** <font color = ' #7d8793'>String</font>
+
+  If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistics.
+  Note that this parameter must be passed if you are using the secondery merchant function, this parameter must be passed.
+
+  Maximum length: `200`
+
+  <br />
+
+- **secondaryMerchantId** <font color = ' #7d8793'>String</font>
+
+  If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
+
+  Maximum length: `200`
+
+  <br />
+
+- **reserved** <font color = ' #7d8793'>String</font>
+
+  Merchant's notes for the order.
+
+  Example value: June campaign order.
+
+  Maximum length: `200`
+
+  <br />
