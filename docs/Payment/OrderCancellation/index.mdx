@@ -3,7 +3,8 @@ sidebar_position: 2
 toc_max_heading_level: 6
 ---
 import AcquireOrder from "../OrderCreation/_acquire-order.mdx";
-
+import RequestHeader from '../../_request-header.mdx'
+import ResponseHead from '../../Refund/_response-head.mdx'
 
 # Cancel Order
 
@@ -27,39 +28,11 @@ Production: https://api.payby.com/sgs/api/acquire2/cancelOrder
 
 ---
 
-**Content-Language**    <font color = '#7d8793'>String</font> 
+<details>
+  <summary>The attributes are:</summary>
 
-The language in which the response message will be used, currently only English is supported.
-
-Example value: en
-
-Maximum length: `10`
-
-<br/>
-
-**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
-
-The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
-
-Example value: application/json
-
-<br/>
-
-**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
-
-Requests should be signed using private-key cryptography. This allows the payment gateway to verify that an incoming request is really from your application.
-
-<br/>
-
-**Partner-Id**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-The merchant id of your account. 
-
-Example value: 200001200101
-
-Maximum length: `12`
-
-<br/>
+  <RequestHeader/>
+</details>
 
 #### Http Body
 
@@ -135,35 +108,10 @@ When Payby sends response, Payby will use its own private key to sign the messag
 
 **head** 
 
-- **applyStatus**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
-
-  The result of the request. The possible values are:
-
-  `SUCCESS `- Application successful.
-  `FAIL` - Application failed. Check the `code`  and `msg` for exact reason.
-  `ERROR` - Application error. The signature verification failed. Please check whether the private key used for the signature and the public key uploaded on the PayBy portal are one key pair.
-
-<br/>
-
-- **code**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-  Response Codes. View the [resconse codes](#response code) section to know all the possible results.
-
-  Example value: 0
-
-  <br/>
-
-- **msg**   <font color = ' #7d8793'>String</font>   
-
-  Description of this code. View the [resconse codes](#response code) section to know all the possible results.
-
-  <br/>
-
-- **traceCode**   <font color = ' #7d8793'>String</font>   
-
-  No special meaning, PayBy internally used to locate the error.
-
-  <br/>
+  <details>
+    <summary>The attributes are:</summary>
+    <ResponseHead />
+  </details>
 
 **body** 
 

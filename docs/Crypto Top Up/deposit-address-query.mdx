@@ -4,7 +4,7 @@ toc_max_heading_level: 6
 ---
 
 import RequestHeader from '../_request-header.mdx'
-
+import ResponseHead from '../Refund/_response-head.mdx'
 
 # Get deposit address
 
@@ -128,35 +128,10 @@ When Payby sends response, Payby will use its own private key to sign the messag
 
 **head** 
 
-- **applyStatus**   <font color = ' #7d8793'>Enum</font>    <font color = '#f19938'>Required</font>
-
-  The result of the request. The possible values are:
-
-  `SUCCESS `- Application successful.
-  `FAIL` - Application failed. Check the `code`  and `msg` for exact reason.
-  `ERROR` - Application error. The signature verification failed. Please check whether the private key used for the signature and the public key uploaded on the PayBy portal are one key pair.
-  
-  <br/>
-
-- **code**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-  Response Codes. View the [resconse codes](#response code) section to know all the possible results.
-
-  Example value: 0
-
-  <br/>
-
-- **msg**   <font color = ' #7d8793'>String</font>   
-
-  Description of this code. View the [resconse codes](#response code) section to know all the possible results.
-
-  <br/>
-
-- **traceCode**   <font color = ' #7d8793'>String</font>   
-
-  No special meaning, PayBy internally used to locate the error.
-
-  <br/>
+  <details>
+  <summary>The attributes are:</summary>
+    <ResponseHead />
+  </details>
 
 **body** 
 

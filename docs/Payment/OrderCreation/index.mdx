@@ -18,6 +18,8 @@ import JSAPI from "./_jsapi.md";
 import QRPAY from "./_qrpay.md";
 import InAPP from "./_in-app.md";
 import ResponseExample from './_response-example.md'
+import RequestHeader from '../../_request-header.mdx'
+import ResponseHead from '../../Refund/_response-head.mdx'
 export const PRODUCTS_ENUM = {
   PAYPAGE: "Paypage",
   IN_APP_SDK: "In-APP SDK",
@@ -89,39 +91,11 @@ Production : https://api.payby.com/sgs/api/acquire2/placeOrder
 
 ---
 
-**Content-Language** <span style={{color:"#7d8793"}}>String</span>
+<details>
+  <summary>The attributes are:</summary>
 
-The language in which the response message will be used, currently only English is supported.
-
-Example value: en
-
-Maximum length: `10`
-
-<br />
-
-**Content-Type** <span style={{color:"#7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
-
-Example value: application/json
-
-<br />
-
-**sign** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-Requests should be signed using private-key cryptography. This allows the payment gateway to verify that an incoming request is really from your application.
-
-<br />
-
-**Partner-Id** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-The merchant id of your account.
-
-Example value: 200001200101
-
-Maximum length: `12`
-
-<br />
+  <RequestHeader/>
+</details>
 
 #### Http Body
 
@@ -325,35 +299,10 @@ When Payby sends response, Payby will use its own private key to sign the messag
 
 **head**
 
-- **applyStatus** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
-
-  The result of the request. The possible values are:
-
-  `SUCCESS `- Application successful.
-  `FAIL` - Application failed. Check the `code` and `msg` for exact reason.
-  `ERROR` - Application error. The signature verification failed. Please check whether the private key used for the signature and the public key uploaded on the PayBy portal are one key pair.
-
-<br />
-
-- **code** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Response Codes. View the [resconse codes](#response code) section to know all the possible results.
-
-  Example value: 0
-
-  <br />
-
-- **msg** <span style={{color:" #7d8793"}}>String</span>
-
-  Description of this code. View the [resconse codes](#response code) section to know all the possible results.
-
-  <br />
-
-- **traceCode** <span style={{color:" #7d8793"}}>String</span>
-
-  No special meaning, PayBy internally used to locate the error.
-
-  <br />
+  <details>
+    <summary>The attributes are:</summary>
+    <ResponseHead />
+  </details>
 
 **body**
 
