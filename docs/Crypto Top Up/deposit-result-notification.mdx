@@ -26,18 +26,22 @@ If the `notifyUrl` parameter is passed in the order creation request to receive 
 
 ---
 
-**Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
+<details>
+  <summary> The attributes are:</summary>
 
-The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+  **Content-Type**    <font color = '#7d8793'>String</font>  <font color = '#f19938'>Required</font>
 
-Example value: application/json
+  The media type. Required for operations with a request body. The value is `application/<format>`, where `format` is `json`.
+
+  Example value: application/json
 
 
 
-**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+  **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+  When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
 
+</details>
 
 
 #### Http Body

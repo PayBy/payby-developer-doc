@@ -3,7 +3,6 @@ sidebar_position: 2
 toc_max_heading_level: 6
 ---
 
-import HttpHeader from './_http-header.md'
 import BizContent from './_biz-content.mdx'
 import ResponseHead from '../Refund/_response-head.mdx'
 import TransferToBankOrder from './_transfer-to-bank-order.mdx'
@@ -30,7 +29,13 @@ Production : https://api.payby.com/sgs/api/transfer/placeTransferToBankOrder
 
 ---
 
-<HttpHeader/>
+import RequestHeader from '../_request-header.mdx'
+
+<details>
+  <summary>The attributes are:</summary>
+
+  <RequestHeader/>
+</details>
 
 #### Http Body
 

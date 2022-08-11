@@ -4,7 +4,6 @@ toc_max_heading_level: 6
 ---
 
 import ResponseHead from "../Refund/_response-head.mdx";
-import HttpHeader from "./_http-header.md";
 
 # Rate Calculator
 
@@ -26,7 +25,13 @@ Production : https://api.payby.com/sgs/api/transfer/calculateFundout
 
 ---
 
-<HttpHeader />
+import RequestHeader from '../_request-header.mdx'
+
+<details>
+  <summary>The attributes are:</summary>
+
+  <RequestHeader/>
+</details>
 
 #### Http Body
 
