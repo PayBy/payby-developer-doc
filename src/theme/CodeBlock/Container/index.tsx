@@ -85,14 +85,14 @@ function useCollapseAnimation({
           requestAnimationFrame(() => {
             el.style.height = CollapsedStyles.height;
             el.style.overflow = CollapsedStyles.overflow;
-            toggleHolder.style.transform = "rotate(180deg)";
+            toggleHolder.style.transform = "rotate(0deg)";
             mask.style.display = "block";
           });
         }
         // 开启
         else {
           mask.style.display = "none";
-          toggleHolder.style.transform = "rotate(0deg)";
+          toggleHolder.style.transform = "rotate(180deg)";
           el.style.display = "block";
           // el.style.overflow = "visible";
           requestAnimationFrame(() => {
