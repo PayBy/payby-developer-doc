@@ -1,0 +1,34 @@
+.block__container-div{
+	overflow:hidden;
+	position: relative;
+	height:400px;
+}
+
+.block__container__mask-div{
+	display:none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: var(--ifm-code-border-radius);
+	background:linear-gradient(transparent,90%,#eee);
+	z-index:3
+}
+.block__container__mask-div + div{
+	/* z-index:3; */
+}
+
+.block__toggle-span{
+	position: absolute;
+	display:none;
+	width: 100%;
+	height: 32px;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	z-index: 4;
+}
+.block__toggle-span .holder{
+	cursor:pointer;
+	transition-delay: 300ms;
+	transition: transform 1000ms ease-in-out;
+}
