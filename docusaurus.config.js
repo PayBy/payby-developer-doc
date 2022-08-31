@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/duotoneLight');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const mdxMermaid =require('mdx-mermaid')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -30,12 +31,13 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      // /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
+          remarkPlugins: [mdxMermaid],
         },
         blog: {
           showReadingTime: true,

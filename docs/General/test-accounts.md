@@ -11,11 +11,13 @@ toc_max_heading_level: 6
 
 ### Bank account
 
+<div className='full-width-table-container'>
+
 | Card Number         | MONTH/YEAR | CVV2 | Simulation Case                      |
 | ------------------- | ---------- | ---- | ------------------------------------ |
 | 5123 4500 0000 0008 | 05/31      | 100  | Success<br/>Pending<br/>Failure<br/> |
 
 
-
+</div>
 
 
