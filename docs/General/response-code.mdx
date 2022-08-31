@@ -99,6 +99,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 <br/>
 
 #### Revoke order
+<div className='full-width-table-container'>
 
 | code  | msg                         | Description                                                  |
 | ----- | --------------------------- | ------------------------------------------------------------ |
@@ -108,6 +109,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 62041 | ACQUIRE_ORDER_REFUNDED      | The order has been refunded and cannot be revoked            |
 | 62046 | REVOKE_REJECTED             | Request is rejected                                          |
 
+</div>
 <br/>
 
 #### Refund order
@@ -167,6 +169,8 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 #### Transfer to bank
 
+<div className='full-width-table-container'>
+
 | code  | msg                     | Description                                                  |
 | ----- | ----------------------- | ------------------------------------------------------------ |
 | 62002 | ORDER_FAILURE           | The order has failed                                         |
@@ -175,11 +179,14 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 62028 | ORDER_SUCCESS           | The order has been successful                                |
 | 62029 | ORDER_CREATED           | The order has been created                                   |
 
+</div>
 <br/>
 
 
 
 #### Transaction failure reason
+
+<div className='full-width-table-container'>
 
 | code  | msg                                          | Description                                           |
 | ----- | -------------------------------------------- | ----------------------------------------------------- |
@@ -189,7 +196,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 92003 | Non-KYC user transactions                    | User has not completed KYC verification               |
 | 92004 | Channel rejection                            | The external fundout channel rejected the transaction |
 
-
+</div>
 
 #### Retrieve order detail
 
