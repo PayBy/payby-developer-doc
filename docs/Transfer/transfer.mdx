@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 import TransferToOrder from './_transfer-to-order.mdx'
@@ -33,7 +34,7 @@ Production : https://api.payby.com/sgs/api/transfer/placeTransferOrder
   <RequestHeader/>
 </details>
 
-
+<br/>
 
 #### Http Body
 
@@ -53,7 +54,7 @@ Example value: 1581493898000
   <summary>The attributes are:</summary>
     <BizContent />
   </details>
-
+<br/>
 
 #### Request sample
 
@@ -84,7 +85,7 @@ Http Body
 }
 ```
 
-
+<br/>
 
 ### Response
 
@@ -108,7 +109,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>The attributes are:</summary>
     <ResponseHead />
   </details>
-
+<br/>
 
 **body** 
 
@@ -126,7 +127,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
     <TransferToOrder />
   </details>
 
-
+<br/>
 
 #### Response sample
 

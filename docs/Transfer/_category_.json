@@ -1,6 +1,6 @@
 {
-  "label": "Tranfer",
-  "position": 6,
+  "label": "Transfer",
+  "position": 13,
   "link": {
     "type": "generated-index",
     "description": "Transfer fund to a PayBy E-wallet user."

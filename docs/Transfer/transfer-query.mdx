@@ -32,6 +32,8 @@ Production : https://api.payby.com/sgs/api/transfer/getTransferOrder
   <RequestHeader/>
 </details>
 
+<br/>
+
 #### Http Body
 
 ---
@@ -110,6 +112,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>The attributes are:</summary>
     <ResponseHead />
   </details>
+<br/>
 
 **body** 
 
@@ -118,7 +121,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
 If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
- 
+ <br/>
 
 #### Response sample
 
