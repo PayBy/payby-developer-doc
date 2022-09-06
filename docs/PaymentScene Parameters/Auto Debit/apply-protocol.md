@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-Slug:/applyprot
+slug: /applyprot
 ---
 
 # Apply Protocol
