@@ -5,7 +5,7 @@ toc_max_heading_level: 6
 
 
 
-# Best practice
+# System integration best practice
 
 <br/>
 
