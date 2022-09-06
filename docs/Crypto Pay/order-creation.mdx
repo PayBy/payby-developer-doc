@@ -36,7 +36,7 @@ Production : https://api.payby.com/sgs/api/crypto/placeOrder
   <RequestHeader/>
 </details>
 
-
+<br/>
 
 #### Http Body
 
@@ -51,10 +51,6 @@ Example value: 1581493898000
 <br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
-
-<details>
-
-  <summary>The attributes are:</summary>
 
 - **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -198,11 +194,10 @@ Example value: 1581493898000
     <summary>
     The attributes are:
     </summary> 
-
     <TerminalDetail/>
   </details>
 
-</details>
+<br/>
 
 **reserved**   <font color = ' #7d8793'>String</font>  
 
@@ -277,7 +272,7 @@ Http Body
 }
 ```
 
-
+<br/>
 
 ### Response
 
@@ -289,7 +284,7 @@ Http Body
 
 When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
 
-
+<br/>
 
 #### Http Body
 
@@ -301,8 +296,8 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>The attributes are:</summary>
     <ResponseHead />
   </details>
+<br/>
 
-  
 
 **body** 
 
@@ -311,7 +306,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
 If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
-
+<br/>
 
 - **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
 
@@ -319,6 +314,8 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
   <summary>The attributes are:</summary>
     <AcquireOrder />
   </details>
+
+<br/>
 
 
    - **interactionParams**  
@@ -329,8 +326,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
         A link that redirects the payer to the paypage.
 
-     <br/>  
-
+     <br/>
 
 #### Response sample
 
@@ -399,5 +395,4 @@ Http Body
     }
 }
 ```
-
 

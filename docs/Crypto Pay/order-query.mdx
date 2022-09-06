@@ -34,6 +34,8 @@ import RequestHeader from "../_request-header.mdx";
   <RequestHeader/>
 </details>
 
+<br/>
+
 #### Http Body
 
 ---
@@ -88,6 +90,8 @@ Http Body
 }
 ```
 
+<br/>
+
 ### Response
 
 #### Http Header
@@ -97,6 +101,8 @@ Http Body
 **sign** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
 When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
 
 #### Http Body
 
@@ -108,6 +114,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>The attributes are:</summary>
   <ResponseHead />
 </details>
+<br/>
 
 **body**
 
@@ -272,6 +279,8 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
     Maximum length: `200`
 
   </details>
+
+<br/>
 
 #### Response sample
 
