@@ -33,7 +33,7 @@ Production : https://api.payby.com/sgs/api/digitalReceipt/getOrder
   <RequestHeader/>
 </details>
 
-
+<br/>
 
 #### Http Body
 
@@ -45,7 +45,7 @@ If the request time is more than 15 minutes away from the current time, the requ
 
 Example value: 1581493898000
 
-
+<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
@@ -58,8 +58,8 @@ You can use either `receiptNo`  or `orderNo` to specify an order. But you can't 
   Example value: M965739182419
 
   Maximum length: `64`
-
-
+  
+  <br/>
 
 - **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -69,7 +69,7 @@ You can use either `receiptNo`  or `orderNo` to specify an order. But you can't 
 
   Maximum length: `32`
 
-  
+  <br/>
 
 #### Request sample
 
@@ -91,7 +91,7 @@ Http Body
 }
 ```
 
-
+<br/>
 
 ### Response
 
@@ -103,7 +103,7 @@ Http Body
 
 When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
 
-
+<br/>
 
 **body** 
 
@@ -481,5 +481,4 @@ Http Body
     }
 }
 ```
-
 
