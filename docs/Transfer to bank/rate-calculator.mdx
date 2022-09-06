@@ -29,9 +29,10 @@ import RequestHeader from '../_request-header.mdx'
 
 <details>
   <summary>The attributes are:</summary>
-
   <RequestHeader/>
 </details>
+
+<br/>
 
 #### Http Body
 
@@ -47,8 +48,8 @@ Example value: 1581493898000
 
 **bizContent** <font color = ' #7d8793'>Object</font>
 
-<details>
-  <summary> The attributes are: </summary>
+The attributes are:
+
 
 - **networkCode** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
@@ -74,9 +75,8 @@ Example value: 1581493898000
 
   How much AED do you want to transfer.
 
-  <br />
 
-</details>
+<br/>
 
 #### Request sample
 
@@ -103,7 +103,21 @@ Http Body
 }
 ```
 
+<br/>
+
 ### Response
+
+#### Http Header
+
+---
+
+**sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
+
+When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
+
+
 
 #### Http Body
 
@@ -115,6 +129,7 @@ Http Body
   <summary>Show header:</summary>
   <ResponseHead />
 </details>
+<br/>
 
 **body**
 
@@ -124,42 +139,39 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 
 - **fundoutInfo** <font color = ' #7d8793'>Object</font>
 
-<details>
-  <summary>The attributes are:</summary>
+  The attributes are:
 
-- **orderAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+  - **orderAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
     How much AED do you want to transfer.
-  <br />
+    <br />
 
-- **fundoutAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+  - **fundoutAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
 
-  How much money the beneficiary will receive.
+    How much money the beneficiary will receive.
 
-  <br />
+    <br />
 
-- **feeAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
+  - **feeAmount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
 
-  How much money PayBy will charge in this transaction.
+    How much money PayBy will charge in this transaction.
 
-  <br />
+    <br />
 
-- **networkCode** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+  - **networkCode** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
-  The code of which transfer network is used in this payout.
+    The code of which transfer network is used in this payout.
 
-  Example value: LOCAL, SWIFT
+    Example value: LOCAL, SWIFT
 
-  <br />
+    <br />
 
-- **rate** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
+  - **rate** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
-  The exchange rate that AED to the currency of the received fund.
+    The exchange rate that AED to the currency of the received fund.
 
-  Example value: IBAN, BBAN
+    Example value: IBAN, BBAN
 
-  <br />
-  
-</details>
+<br/>
 
 #### Response sample
 

@@ -10,11 +10,15 @@ import FundoutAbilityList from './_fundout-ability-list.mdx'
 
 Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
+<br/>
+
 ### API URL
 
 Staging : https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
 
 Production : https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
+
+<br/>
 
 ### Request
 
@@ -30,6 +34,7 @@ import RequestHeader from '../_request-header.mdx'
   <RequestHeader/>
 </details>
 
+<br/>
 
 #### Http Body
 
@@ -40,6 +45,8 @@ import RequestHeader from '../_request-header.mdx'
 Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
 
 Example value: 1581493898000
+
+<br/>
 
 #### Request sample
 
@@ -58,6 +65,8 @@ Http Body
 }
 ```
 
+<br/>
+
 ### Response
 
 #### Http Header
@@ -67,6 +76,8 @@ Http Body
 **sign** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
 When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+
+<br/>
 
 #### Http Body
 
@@ -78,6 +89,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>Show header:</summary>
   <ResponseHead />
 </details>
+<br/>
 
 **body**
 
@@ -90,10 +102,11 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 
   
 <details>
-  <summary>The attributes of each item in the list are:</summary>
+  <summary>Show attributes of each item in the list</summary>
   <FundoutAbilityList />
 </details>
 
+<br/>
 
 #### Response sample
 
