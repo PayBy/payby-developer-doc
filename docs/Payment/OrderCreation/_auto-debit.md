@@ -1,6 +1,6 @@
 **AUTODEBIT**
 
-BOTIM & PayBy built-in checkout
+Automatically deduct the funds from the user's BOTIM & PayBy account
 
 ---
 

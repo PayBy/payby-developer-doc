@@ -3,8 +3,8 @@ title: Create order
 id: createOrder 
 sidebar_position: 1
 toc_max_heading_level: 6
+slug: /createorder
 ---
-
 
 import AcquireOrder from "./_acquire-order.mdx";
 import { useState } from "react";
@@ -32,23 +32,22 @@ export const PRODUCTS_ENUM = {
 };
 
 export const PRODUCTS_MAP = {
-  [PRODUCTS_ENUM.PAYPAGE]: Paypage,
-  [PRODUCTS_ENUM.E_WALLET]: E_WALLET,
-  [PRODUCTS_ENUM.DYNQR]: DYNQR,
-  [PRODUCTS_ENUM.QRPAY]: QRPAY,
-  [PRODUCTS_ENUM.JSAPI]: JSAPI,
-  [PRODUCTS_ENUM.AUTODEBIT]: AutoDebit,
-  [PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
-  [PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
+[PRODUCTS_ENUM.PAYPAGE]: Paypage,
+[PRODUCTS_ENUM.E_WALLET]: E_WALLET,
+[PRODUCTS_ENUM.DYNQR]: DYNQR,
+[PRODUCTS_ENUM.QRPAY]: QRPAY,
+[PRODUCTS_ENUM.JSAPI]: JSAPI,
+[PRODUCTS_ENUM.AUTODEBIT]: AutoDebit,
+[PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
+[PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
 };
 
 export function SwitchProduct() {
   const [product, setProduct] = useState(PRODUCTS_ENUM.PAYPAGE);
   const ProductComponent = PRODUCTS_MAP[product];
-  return (
-    <div>
+  return (<div>
       <label htmlFor="product" className="">
-        Products:
+        Payscene codes:
       </label>
       &nbsp;
       <select name="product" id="product" value={product} onChange={(e) => setProduct(e.target.value)}>
@@ -60,30 +59,30 @@ export function SwitchProduct() {
       </select>
       <br />
       <br />
-      <p>
-        <b>paySceneParams</b> <span style={{ color: " #7d8793" }}>String</span>
-      </p>
-      <br />
-      <details>
-        <summary>
-          Different payment scenarios need to pass different scenario parameters. For details, please visit
-        </summary>
-        <ProductComponent />
-      </details>
-    </div>
+​      <li><b>paySceneParams</b> <span style={{ color: " #7d8793" }}>String</span></li>
+​      <details>
+​        <summary>
+​          Show attributes
+​        </summary>
+​        <ProductComponent />
+​      </details>
+​    </div>
   );
 }
 
 
 
-
 Creates an order.
 
-### Interface URL
+<br/>
+
+### API URL
 
 Staging : https://uat.test2pay.com/sgs/api/acquire2/placeOrder
 
 Production : https://api.payby.com/sgs/api/acquire2/placeOrder
+
+<br/>
 
 ### Request
 
@@ -96,6 +95,8 @@ Production : https://api.payby.com/sgs/api/acquire2/placeOrder
 
   <RequestHeader/>
 </details>
+
+<br/>
 
 #### Http Body
 
@@ -175,17 +176,18 @@ The attributes are:
 
 - **paySceneCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
 
-  Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
+  Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.<br/>
 
+  Select from the drop down to get parameters that need to be passed in different scenarios.
+  
   <SwitchProduct />
 
-<br />
 
 - **notifyUrl** <span style={{color:" #7d8793"}}>String</span>
 
   To receive asynchronous notifications of order status updates, you can pass the notify URL.
 
-  Example value: https://www.payby.com/
+  Example value: https://www.yoursite.com
 
   Maximum length: `200`
 
@@ -210,11 +212,14 @@ The attributes are:
 
 - **accessoryContent**
 
+  This can be useful for storing additional information about the order.
+  
   <details>
-    <summary>This can be useful for storing additional information about the order.</summary>
+    <summary>Show attributes</summary>
     <AccessoryContent/> 
   </details>
 
+<br/>
 
 #### Request sample
 
@@ -303,6 +308,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
     <summary>The attributes are:</summary>
     <ResponseHead />
   </details>
+<br/>
 
 **body**
 
@@ -314,6 +320,8 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>The attributes are:</summary>
     <AcquireOrder />
   </details>
+
+  <br/>
 
 - **interactionParams**
 
