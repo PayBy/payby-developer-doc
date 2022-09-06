@@ -1,8 +1,7 @@
-```
+---
 sidebar_position: 1
-```
-
-
+Slug:/applyprot
+---
 
 # Apply Protocol
 
@@ -16,8 +15,6 @@ Staging : https://uat.test2pay.com/sgs/api/protocol/applyProtocol
 
 Production : https://api.payby.com/sgs/api/protocol/applyProtocol
 <br/>
-
-
 
 ### Request
 
@@ -113,55 +110,69 @@ The attributes are:
 
 - **signerMerchantId**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  Description of this order. 
+  The payer's id in the merchant's system. This parameter needs to be encrypted when passed.
 
-  Example value: iPhone
-
-  Maximum length: `12`
+  Maximum length: `200`
 
   <br/>
 
 - **protocolSceneCode**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  Description of this order. 
-
-  Example value: iPhone
-
-  Maximum length: `12`
+  Pass `110` in for this parameter.
 
   <br/>
 
-- **expiredTime**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+- **expiredTime** Timestamp
 
-  Description of this order. 
+  The request expiration time, after which the request cannot be completed.
 
-  Example value: iPhone
+  The value should not exceed 48 hours after the request time. If no parameter is passed, the default expiration time is 15 minutes after the request time.
 
-  Maximum length: `12`
-
-  <br/>
-
-- **protocolSceneParams**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-  Description of this order. 
-
-  Example value: iPhone
-
-  Maximum length: `12`
+  Example value: 1581493898000
 
   <br/>
 
-- **accessType**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+- **accessType**   <font color = ' #7d8793'>Enum</font>
 
-  Description of this order. 
-
-  Example value: iPhone
-
-  Maximum length: `12`
+  The possible values are `SDK`, `H5`. If this parameter is not used, the default is `SDK`.
 
   <br/>
 
+- **protocolSceneParams**   <font color = ' #7d8793'>Object</font>  
 
+  If the **accessType** is `SDK`, please pass
+
+  - **iapDeviceId**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+    The device id of the payer, also known as IMEI. The International Mobile Equipment Identity (IMEI) number is a unique identification or serial number that all mobile phones and smartphones have. It is normally 15 digits long.
+
+    Example value: [https://www.yoursite.com](https://www.yoursite.com/)
+
+    Maximum length: `512`.
+
+    <br/>
+
+  - **appId** <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
+
+    Your app needs to be registered with Payby. Payby will assign an app id after successful registration. Please log in to the portal and visit [Setting - Developers - My Apps] to register your application.
+
+    Example value: 20211222000000241
+
+    Maximum length: `17`.
+
+    <br/>
+
+  If the **accessType** is `H5`, please pass
+
+  - **redirectUrl** <font color = ' #7d8793'>String</font>
+
+    Link that the payer will be redirected once the payer finished signing the protocol.
+
+    Example value: [https://www.yoursite.com](https://www.yoursite.com/)
+
+    Maximum length: `512`
+
+    <br/>
 
 #### Request sample
 
@@ -196,7 +207,7 @@ Http Body
 
 ```
 
-
+<br/>
 
 ### Response
 
@@ -223,8 +234,8 @@ When Payby sends response, Payby will use its own private key to sign the messag
   `SUCCESS `- Application successful.
   `FAIL` - Application failed. Check the `code`  and `msg` for exact reason.
   `ERROR` - Application error. The signature verification failed. Please check whether the private key used for the signature and the public key uploaded on the PayBy portal are one key pair.
-
-<br/>
+  
+  <br/>
 
 - **code**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -250,15 +261,36 @@ When Payby sends response, Payby will use its own private key to sign the messag
 
 **Notice **:Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
-- **acquireOrder**   <font color = ' #7d8793'>Object</font>
+- **interActionParams**   <font color = ' #7d8793'>Object</font>
 
   The attributes are:
 
-     - **requestTime**   <font color = ' #7d8793'>Timestamp</font>    <font color = '#f19938'>Required</font>
+     - **tokenUrl**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-       Request time passed by the merchant when placing the order.
+       PayBy will provides a link containing the token. The merchant backend can use it to call PayBy or BOTIM app to complete the payment. The validity period of tokenUrl is 1 hour. If the validity period is exceeded, use the same parameters to create an`Apply Protocol`order and obtain a new token Url.
 
-       Example value: 1581493898000
+       <br/>
 
+#### Response sample
 
+```json
+Http Header
+{
+    "sign": "VvlCywDHE0Pi35ypeJymje1GWHbDPhy3UJqPZTLnM0QqFa3QW+Yzc25kgsrB9t58c2oRdWo+stcvMhOeOgbrXNOhLAECD5bpSr2L1xEVhowd1k8tNlq+w2WhzUM0A77YVO2wapqqtBvsFi09o/ix7gCyX+850oLLxEEbbBR48fufVJxcOQ4y7bdkSufd+9gY4vdcJYMmnToSVQ72ObekhyZiXhT5zfnHjbFYGGpRXh/HvDiE+OGdTDYmHH4Ui+funH9kCg291/pWIV8Yp0hIQJ29cuJyCYsm1brkLopU1eak7fgculNo5SnCZH9nTIHYsIQtsMAXgI8q0MecBR2ovw=="
+}
 
+Http Body
+{
+    "head": {
+        "applyStatus": "SUCCESS",
+        "code": "0",
+        "msg": "SUCCESS",
+        "traceCode": "1133"
+    },
+    "body": {
+	"interActionParams": {
+                "tokenUrl": "5d11235d-bc23-4093-b761-1fffbc3230f7"
+            }
+    }
+}
+```

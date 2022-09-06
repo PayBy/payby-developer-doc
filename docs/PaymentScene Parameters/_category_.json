@@ -1,6 +1,6 @@
 {
   "label": "Payment Scene Parameters",
-  "position": 4,
+  "position": 9,
   "link": {
     "type": "generated-index",
     "description": "Some payment scenes have more APIs."

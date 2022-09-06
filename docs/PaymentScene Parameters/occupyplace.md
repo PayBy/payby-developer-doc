@@ -1,1 +1,0 @@
-to occupy a place
