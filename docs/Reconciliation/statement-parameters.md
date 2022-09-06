@@ -4,15 +4,15 @@ sidebar_position: 2
 
 
 
-# Statement  Parameters
+# Statement  parameters
 
-
+<br/>
 
 ### File Format
 
 If the request to download statement is successful, you will get a zip file containing two csv files, a transaction statement and a settlement statement.
 
-
+<br/>
 
 #### Zip file name
 
@@ -20,7 +20,7 @@ If the request to download statement is successful, you will get a zip file cont
 | ---------------------------------------------- | ----------------------------------------------------- |
 | PartnerId_dateTransaction_Settle_Statement.zip | 200000054800_20210112Transaction_Settle_Statement.zip |
 
-
+<br/>
 
 #### Content file name
 
@@ -29,7 +29,7 @@ If the request to download statement is successful, you will get a zip file cont
 | Purchase_Statement_date_no.csv        | Purchase_Statement_13012021_001.csv        |
 | Purchase_Settle_Statement_date_no.csv | Purchase_Settle_Statement_13012021_001.csv |
 
-
+<br/>
 
 **<font color = '#f19938'>Notice </font>**
 
@@ -37,7 +37,7 @@ If the request to download statement is successful, you will get a zip file cont
 2. The PURCHASE_SETTLE_STATEMENT file contains all settlement orders for the settlement time on the billing day.
 4. The content of a single file in the CSV format does not exceed 50,000 lines. If it's more than 50,000 lines, it will generate the next numbered file. The numbering starts from 001.
 
-
+<br/>
 
 ### Transaction statement
 
@@ -47,7 +47,7 @@ The format of the transaction statement is as follows:
 2. The second line is the specific data table header.
 3. The third line and the following are specific data content.
 
-
+<br/>
 
 #### Example
 
@@ -57,7 +57,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 2021-01-12T17:46:36+0400|PAYMENT|60.00|AED|Smart Purchase|QRPAY|210112214643201985620006|131610459203006982|SUCCESS|BALANCE|LLH & Medeor Hospital Administration Office|200000054800|533|ADMIN|268|upload key test merchant1|LLH & Medeor Hospital Administration Office||
 ```
 
-
+<br/>
 
 #### Header
 
@@ -68,7 +68,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 | endTime    | End time |
 | totalCount | Total count |
 
-
+<br/>
 
 #### Fields of each row
 

@@ -10,15 +10,14 @@ import RequestHeader from '../_request-header.mdx'
 
 Merchants can download historical statements through this API. The zip file contains 2 statements: transaction statement and settlement statement. To understand the content of the statements, please read Statement  Parameters.
 
-
+<br/>
 
 **<font color = '#f19938'>Notice </font>**
 
 1. PayBy immediately starts to generate the statement of the previous day at the settlement cut-off time (the default is 00:00) set by the merchant, usually within 10 minutes. It is recommended that merchants obtain the statements after half an hour.
-
 2. The currency of the amount involved in the statement is "Dirham".
 
-   
+<br/>
 
 ### API URL
 
@@ -26,7 +25,7 @@ Staging : https://uat.test2pay.com/sgs/api/acquire2/download/getOrderStatement
 
 Production : https://api.payby.com/sgs/api/acquire2/download/getOrderStatement
 
-
+<br/>
 
 ### Request 
 
@@ -40,7 +39,7 @@ Production : https://api.payby.com/sgs/api/acquire2/download/getOrderStatement
   <RequestHeader/>
 </details>
 
-
+<br/>
 
 #### Http Body
 
@@ -52,7 +51,7 @@ If the request time is more than 15 minutes away from the current time, the requ
 
 Example value: 1581493898000
 
-
+<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
@@ -64,7 +63,7 @@ Example value: 1581493898000
 
   Maximum length: `8`
 
-
+<br/>
 
 #### Request sample
 
@@ -88,7 +87,7 @@ Http Body
 }
 ```
 
-
+<br/>
 
 ### Response
 
@@ -96,7 +95,7 @@ There are two cases, **succeed to obtain the file** and **fail to obtain the fil
 
 If the request succeeded, the data will be returned as a compressed .zip file. If failed, the standard format of response will be returned.
 
-
+<br/>
 
 ### Case1: **Succeed to obtain the file**
 
@@ -110,13 +109,13 @@ If the request succeeded, the data will be returned as a compressed .zip file. I
 
   The file name.
 
-  
+  <br/>
 
 - **filePath** 
 
   The path to download the file.
 
-
+<br/>
 
 #### Sample
 
@@ -129,7 +128,7 @@ If the request succeeded, the data will be returned as a compressed .zip file. I
 }
 ```
 
-
+<br/>
 
 ### Case2: **Fail to obtain the file**
 
@@ -141,7 +140,7 @@ If the request succeeded, the data will be returned as a compressed .zip file. I
 
 When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
 
-
+<br/>
 
 #### Http Body
 
@@ -153,7 +152,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
   <summary>The attributes are:</summary>
     <ResponseHead />
   </details>
-
+<br/>
 
 
 #### Sample
@@ -174,5 +173,4 @@ Http Body
     }
 }
 ```
-
 
