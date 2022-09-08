@@ -30,29 +30,35 @@ PayBy provides API for card transactions for merchants to integrate, customers f
 
 When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DIRECTPAY` in the **paysceneCode** parameter.<br/>
 
-
+<br/>
 
 If the request is successful, PayBy will proceed the request to bank and return the payment result to the customer. Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.<br/>
 
-
+<br/>
 
 Usually, the payment can be completed after the user enters the card information, but sometimes the user is required to submit a 3DS verification. In this process, PayBy will return you a URL, and you direct the customer to an authentication page on their bank’s website, and the customer enters a password associated with the card or a code sent to their phone. After successful verification, the transaction proceeds.
 
-
+<br/>
 
 If you feel that the customer's transaction requires a higher level of verification, you can actively initiate 3DS verification.The **threeDSecure** parameter is for the merchant to decide whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, Payby will debit the payment directly after submitting the payment request. The default is False. Note that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
-
+<br/>
 
 The payer's card information can be saved for future use. In the parameter **saveCard**, if pass true, PayBy will return the ID of the card, so that the card ID can be passed directly instead of the card information when another transaction is made. A customer id can save multiple cards in PayBy.
 
-
+<br/>
 
 If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
 
+<br/>
+
+To change order status, you can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
+
+<br/>
+
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
 
-
+<br/>
 
 #### Case2: Use saved card
 
@@ -65,6 +71,10 @@ When the customer confirms to pay, call the [Create order](/docs/createorder) AP
 <br/>
 
 When the customer's card is successfully saved in PayBy, PayBy will return the **cardToken**,  the unique identification number in PayBy. After the customer selects a card, pass this card's token in the **cardToken** parameter. 
+
+<br/>
+
+To change order status, you can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 

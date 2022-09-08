@@ -2,7 +2,9 @@
 sidebar_position: 3
 ---
 
-# QRPAY (Customer presented QR code)
+# QRPAY 
+
+**Customer presented QR code**
 
 QRPAY is the Customer-Presented QR code payment. When the total transaction amount is confirmed in the your POS system at checkout, your customer opens PayBy or BOTIM app to present QR code. The cashier in your shop scans this code with a QR code scanner, finalizing the transaction. QR Pay is suitable for in-person payment collection in stores such as department stores, restaurants, etc. <br/>
 
@@ -24,15 +26,35 @@ If your store is already equipped with barcode scanners and you don't plan to us
 
 ### Integrate the API
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `QRPAY` in the **paysceneCode** parameter.<br/>
+#### Create order
 
-If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.<br/>
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `QRPAY` in the **paysceneCode** parameter.
 
-After the payment the payby server will notify the result to PayBy or BOTIM  app, and the customer will see the payment result on the app.<br/>
+<br/>
+
+If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.
+
+<br/>
+
+After the payment the payby server will notify the result to PayBy or BOTIM  app, and the customer will see the payment result on the app.
+
+<br/>
+
+#### Asynchronous notification
 
 If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
 
-To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
+<br/>
+
+#### **Change Order Status**
+
+You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
+
+<br/>
+
+#### **Retrieve Order**
+
+To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![dynqyflow](../pic/dynqr.png)
 

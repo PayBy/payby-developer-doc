@@ -1,11 +1,12 @@
 ---
 sidebar_position: 4
-
 ---
 
-# JSAPI  (BOTIM & BOTIMPayBy built-in checkout)
+# JSAPI  
 
-f the merchant has an mobile website, when the customer opens the webpage in BOTIM through a message, the built-in checkout  will be revoked to complete the order and purchase process.
+**BOTIM & BOTIMPayBy built-in checkout**
+
+The merchant has an mobile website, when the customer opens the webpage in BOTIM through a message, the built-in checkout  will be invoked to complete the order and purchase process.
 
 If your customers have many installed PayBy or BOTIM app, integrating this payment scenario can help them complete their payments more conveniently. Using this payment method, you don't need to design the checkout interface, just call up the payby payment element.
 
@@ -25,17 +26,37 @@ If your customers have many installed PayBy or BOTIM app, integrating this payme
 
 ### Integrate the API
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DYNQR` in the **paysceneCode** parameter.<br/>
+#### Create order
 
-If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.<br/>
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DYNQR` in the **paysceneCode** parameter.
 
-After the payment the payby server will notify the result to PayBy or BOTIM app, and the customer will see the payment result on the app.<br/>
+<br/>
+
+If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.
+
+<br/>
+
+After the payment the payby server will notify the result to PayBy or BOTIM app, and the customer will see the payment result on the app.
+
+<br/>
+
+#### Asynchronous notification
 
 If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
 
-To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
+<br/>
 
-![dynrqflow](/Users/luowei/Documents/payby/AAAAPI文档0715/API reference new 0715/Documentation/Online Payment/pic/dynqr.png)
+#### **Change Order Status**
+
+You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
+
+<br/>
+
+#### **Retrieve Order**
+
+To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
+
+![jsapiflow](../pic/jsapi.png)
 
 <br/>
 

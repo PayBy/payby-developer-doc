@@ -23,19 +23,37 @@ Hosted paypage is one of the most common and easiest ways to acquire payments. I
 
 ### Integrate the API
 
+#### **Create Order**
+
 When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `PAYPAGE` in the **paysceneCode** parameter.<br/>
 
 If the request is successful, PayBy will return the **tokenUrl**, redirect your customer to the URL for the Checkout page returned in the response.<br/>
 
+<br/>
+
 Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.<br/>
 
+<br/>
+
+#### Asynchronous notification
+
 If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
+
+<br/>
+
+#### **Change Order Status**
+
+You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
+
+<br/>
+
+#### **Retrieve Order**
 
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![hostedflow](../pic/hosted.png)
 
-
+<br/>
 
 ### Customize paypage UI
 

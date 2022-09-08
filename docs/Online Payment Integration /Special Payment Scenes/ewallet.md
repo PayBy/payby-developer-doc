@@ -23,6 +23,8 @@ Put one or more E-wallet  icons that we supported on your mobile application's c
 
 ### Integrate the API
 
+#### Create order
+
 When the customer confirms to pay, render the ewallet list for the customer to choose. Which wallets and order of wallets the customers see is determined by the merchant and stored in the merchant's server. When customers initiate payments, the merchant app query from the merchant's server.<br/>
 
 Call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `EWALLET` in the **paysceneCode** parameter.<br/>
@@ -31,9 +33,21 @@ If the request is successful, PayBy will return a deeplink to redirect the custo
 
 Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.<br/>
 
+#### Asynchronous notification
+
 If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
 
-To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
+<br/>
+
+#### **Change Order Status**
+
+You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
+
+<br/>
+
+#### **Retrieve Order**
+
+To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![ewalletflow](../pic/ewallet.png)
 

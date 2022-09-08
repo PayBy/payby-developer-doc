@@ -1,18 +1,20 @@
-### PayBy Payment Gateway for Opencart Plugin
+# Opencart Plugin
 
-#### Description
 PayBy offers various plugins that enable you to accept payments on your ecommerce website via the PayBy Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 
 You can use the plugins for a seamless integration. This not only allows for refunds and chargebacks but also enables the plugin to works across all browsers.
 
-#### Prerequisite
-##### Product Application
+<br/>
+
+### Product Application
 Step 1:Create your account in the PayBy Merchant Portal.
 
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
 | Production      | https://b.payby.com |
 | Sandbox      | https://uat-web-merchant.test2pay.com/ |
+
+<br/>
 
 Step 2:Visit the Product List to see the product named **Basic Payment Gateway** and click APPLY NOW.
 
@@ -26,11 +28,13 @@ Step 3:Enter the merchant information and submit the application.
 Step 4:Once the application is submitted, it will be reviewed by the PayBy team. This usually takes 1-2 working days.
 <br/>   
 
-##### Generate the API keys from the PayBy Merchant Portal
+### Generate the API keys from the PayBy Merchant Portal
 
 After submitting your product activation request, please visit the API Management of the merchant portal to configure the basic parameters required for the integration.
 
 ![api-management](./pic/api-management4.png)
+
+<br/>
 
 **Step 1:Generating the security keys**
 
@@ -50,9 +54,13 @@ openssl rsa -in PayBy_key.pem -out PayBy_key_public.pem -pubout
 openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
 ```
 
+<br/>
+
 **Step 2:Upload your public key**
 
 Upload "PayBy_key_public.pem" on this step. This pem is used to signiture the request from merchant.
+
+<br/>
 
 **Step 3:Download PayBy Public Key**
 
@@ -60,6 +68,7 @@ This pem is used to Verify the response from PayBy and Encrypting senitive infor
 
 [![object-keys1](./pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLSBVVEYtOCBlbmNvZGluZyAtLT5CW1wiZW5jb2RlZCBtZXNzYWdlXCJdIC0tIFNIQTI1NndpdGhSU0EgLS0-Q1tcInNpZ25hdHVyZVwiXSAtLSBCYXNlNjQgLS0-IERbXCJmaW5hbCBzaWduYXR1cmUgb3V0cHV0XCJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsInNlcXVlbmNlIjp7ImRpYWdyYW1NYXJnaW5YIjo1MCwiZGlhZ3JhbU1hcmdpblkiOjEwLCJhY3Rvck1hcmdpbiI6NTAsIndpZHRoIjo0MDAsImhlaWdodCI6NjUsImJveE1hcmdpbiI6MTAsImJveFRleHRNYXJnaW4iOjUsIm5vdGVNYXJnaW4iOjEwLCJtZXNzYWdlTWFyZ2luIjozNSwibWlycm9yQWN0b3JzIjp0cnVlLCJib3R0b21NYXJnaW5BZGoiOjEsInVzZU1heFdpZHRoIjp0cnVlLCJyaWdodEFuZ2xlcyI6ZmFsc2UsInNob3dTZXF1ZW5jZU51bWJlcnMiOmZhbHNlfX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
+<br/>
 
 **Step 4:Bind IP address (Required)**
 
@@ -68,12 +77,18 @@ For security reasons, we recommend that API should bind at least one IP address.
 If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace with *
 (e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *."
 
-#### Integration Steps
 
-##### Step 1:Download
+
+### Integration Steps
+
+Step 1:Download
+
 https://github.com/PayBy/Extenstions/blob/master/payby.ocmod.zip
 
-##### Step 2:Install Plugin
+<br/>
+
+Step 2:Install Plugin
+
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
 ![pic01](./pic/pic01.png)  
@@ -85,7 +100,10 @@ https://github.com/PayBy/Extenstions/blob/master/payby.ocmod.zip
 
 ![pic02](./pic/pic02.png)
 
-##### Step 3:Configure Opencart
+<br/>
+
+Step 3:Configure Opencart
+
 1. Navigate to Press Extensions → Extensions 
 2. Select Payments as extension Extension type.
 3. Click the Install button to activate PayBy as a payment method.
@@ -105,14 +123,21 @@ https://github.com/PayBy/Extenstions/blob/master/payby.ocmod.zip
 13. Click on Save to update the settings.
 ![pic05](./pic/pic05.png)  
 
-##### Step 4:Check front checkout page
+<br/>
+
+Step 4:Check front checkout page
+
 1. Select PayBy as the payment method.
 
 ![pic06](./pic/pic06.png)
 
+<br/>
+
 2. Confirm Order. 
 
-![pic07](./pic/pic07.png) 
+![pic07](./pic/pic07.png)
+
+<br/>
 
 3. The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
 Option A:
@@ -122,5 +147,7 @@ Option B:
 
 ![pic08](./pic/paypage2.jpg) 
 
+<br/>
+
 4. View payment results in Orders.
-![pic09](./pic/pic09.png)  
+  ![pic09](./pic/pic09.png)  

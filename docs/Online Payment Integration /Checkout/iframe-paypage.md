@@ -107,9 +107,19 @@ Create a success page for the URL you provided in the **redirectUrl**  parameter
 
 <br/>
 
+
+
+
+
 #### Asynchronous notification
 
 If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
+
+<br/>
+
+#### **Change Order Status**
+
+You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 

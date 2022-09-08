@@ -1,21 +1,24 @@
-### PayBy Payment Gateway for WooCommerce Plugin
+# WooCommerce Plugin
 
-#### Description
 WooCommerce is an open source, completely customizable ecommerce platform for entrepreneurs worldwide. It offers a flexible way to build an ecommerce store with WordPress.
 
 Integrate your WooCommerce site with the PayBy Payment Gateway to accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 
 The plugin offers seamless integration, allowing the customer to pay on your website without being redirected. This allows the plugin to work across all browsers and ensures compatibility with the latest version of WooCommerce.
 
-#### Prerequisite
+<br/>
 
-##### 1. Product application
+
+
+### Product application
 Step 1: Create your account in the PayBy Merchant Portal.
 
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
 | Production      | https://b.payby.com |
 | Sandbox      | https://uat-web-merchant.test2pay.com/ |
+
+<br/>
 
 Step 2: Visit the Product List to see the product named **Basic Payment Gateway** and click APPLY NOW.
 
@@ -30,13 +33,15 @@ Step 4:Once the application is submitted, it will be reviewed by the PayBy team.
 <br/>   
 
 
-##### 2. API Management
+### API Management
 After submitting your product activation request, please visit the API Management of the merchant portal to configure the basic parameters required for the integration.
 
 
 ![api-management](./pic/api-management4.png)
 
-**Step 1:Generating the security keys**
+<br/>
+
+**Step 1: Generating the security keys**
 
 ```shell
 ### Generate private key
@@ -54,16 +59,19 @@ openssl rsa -in PayBy_key.pem -out PayBy_key_public.pem -pubout
 openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
 ```
 
-**Step 2:Upload your public key**
+**Step 2: Upload your public key**
 
 Upload "PayBy_key_public.pem" on this step. This pem is used to signiture the request from merchant.
 
-**Step 3:Download PayBy Public Key**
+<br/>
+
+**Step 3: Download PayBy Public Key**
 
 This pem is used to Verify the response from PayBy and Encrypting senitive information.
 
 [![object-keys1](./pic/object-keys1.png)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiICAgIGdyYXBoIExSXG4gICAgICAgIEFbXCJvcmlnaW5hbCBjb250ZW50IG9mIHJlcXVlc3QgYm9keVwiXSAtLSBVVEYtOCBlbmNvZGluZyAtLT5CW1wiZW5jb2RlZCBtZXNzYWdlXCJdIC0tIFNIQTI1NndpdGhSU0EgLS0-Q1tcInNpZ25hdHVyZVwiXSAtLSBCYXNlNjQgLS0-IERbXCJmaW5hbCBzaWduYXR1cmUgb3V0cHV0XCJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsInNlcXVlbmNlIjp7ImRpYWdyYW1NYXJnaW5YIjo1MCwiZGlhZ3JhbU1hcmdpblkiOjEwLCJhY3Rvck1hcmdpbiI6NTAsIndpZHRoIjo0MDAsImhlaWdodCI6NjUsImJveE1hcmdpbiI6MTAsImJveFRleHRNYXJnaW4iOjUsIm5vdGVNYXJnaW4iOjEwLCJtZXNzYWdlTWFyZ2luIjozNSwibWlycm9yQWN0b3JzIjp0cnVlLCJib3R0b21NYXJnaW5BZGoiOjEsInVzZU1heFdpZHRoIjp0cnVlLCJyaWdodEFuZ2xlcyI6ZmFsc2UsInNob3dTZXF1ZW5jZU51bWJlcnMiOmZhbHNlfX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
+<br/>
 
 **Step 4:Bind IP address (Required)**
 
@@ -72,16 +80,19 @@ For security reasons, we recommend that API should bind at least one IP address.
 If there is only one IP address, you can enter it directly. If there is more than one IP address, you should separate them with halfwidth comma (e.g. 192.168.1.1,192.168.1.2,192.168.1.3) or Replace with *
 (e.g. 192.168.*.*,172.16.9.*,192.168.1.1). If you want to allow any ip addresses,you can only enter *."
 
+<br/>
 
 
+### Integration Steps
 
-#### Integration Steps
+**Step 1: Download**
 
-##### Step 1:Download
 https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-payby.zip
 
+<br/>
 
-##### Step 2:Install Plugin
+**Step 2: Install Plugin**
+
 1. Set the payment currency to AED – United Arab Emirates Dirham.
 
 ![pic01](./pic/pic01.png) 
@@ -101,7 +112,10 @@ https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-pay
 
 ![pic03](./pic/pic03.png)
 
-##### Step 3:Configure WooCommerce
+<br/>
+
+**Step 3: Configure WooCommerce**
+
 1. Navigate to WooCommerce → Setting
 2. Set PayBy as the payment method.
 
@@ -117,13 +131,17 @@ https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-pay
 
 ![pic05](./pic/pic05.png)  
 
+<br/>
 
-##### Step 4:Check front checkout page
-Step 1:Select PayBy as the payment method and place the order.
+**Step 4: Check front checkout page**
+
+1: Select PayBy as the payment method and place the order.
 
 ![pic06](./pic/pic06.png)  
 
-Step 2:The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
+<br/>
+
+2: The page will be redirected to the PayPage, choose to pay by SCAN PAY or CARD PAY.<br/>
 Option A:
 
 ![pic08](./pic/paypage1.png)  
@@ -132,6 +150,6 @@ Option B:
 
 ![pic08](./pic/paypage2.jpg) 
 
-Step 3:View payment results in Orders.
+<br/>
 
- ![pic09](./pic/pic09.png) 
+Step 3: View payment results in Orders. ![pic09](./pic/pic09.png) 
