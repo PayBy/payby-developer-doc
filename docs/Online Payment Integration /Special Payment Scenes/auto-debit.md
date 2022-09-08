@@ -20,7 +20,7 @@ This product is suitable for recurring payment. After the customer agrees to the
 
 #### Step1: Customer signs the agreement
 
-The merchant app collects all the parameters needed to sign the agreement and the merchant's server call the [Apply Protocal](/applyprot) API.
+The merchant app collects all the parameters needed to sign the agreement and the merchant's server call the [Apply Protocal](/docs/applyprot) API.
 
 If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.<br/>
 
