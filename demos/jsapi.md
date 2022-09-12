@@ -14,7 +14,7 @@ Sample:
 
 ![jsapi](./pic/demojsapi.png)
 
-<br/>**Step 1**: Use PayBy app of test environment to scan the code above. Find the apk and account [here](/docs/testaccount).
+<br/>**Step 1**: Use PayBy app of test environment to scan the code above. Find the apk and account [here](/demos/testaccount).
 
 <br/>
 

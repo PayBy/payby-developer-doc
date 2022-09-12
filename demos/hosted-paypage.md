@@ -24,6 +24,6 @@ You can also scan code to get the link above:
 
 <br/>
 
-**Step 3**: Now you have been redirected to the PayBy hosted checkout page. Please use the bank account and PayBy account of test environment version to experience the payment process. Find the apk and account [here](/docs/testaccount).
+**Step 3**: Now you have been redirected to the PayBy hosted checkout page. Please use the bank account and PayBy account of test environment version to experience the payment process. Find the apk and account [here](/demos/testaccount).
 
 <br/>

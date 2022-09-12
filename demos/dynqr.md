@@ -14,7 +14,7 @@ Enter amount and click **Pay Now** to generate a code.
 
 ![image-20220909163104182](/Users/luowei/Library/Application Support/typora-user-images/image-20220909163104182.png)
 
-**Step 1**: Use PayBy app of test environment to scan the code above. Find the apk and account [here](/docs/testaccount).
+**Step 1**: Use PayBy app of test environment to scan the code above. Find the apk and account [here](/demos/testaccount).
 
 <br/>
 

@@ -14,6 +14,6 @@ If your site has integrated our iframe paypage, your site will look like this:
 
 
 
-To experience the payment process, enter the fields and click **Pay Now** below. Please use the bank account and PayBy account of test environment version to experience. Find the apk and account [here](/docs/testaccount).
+To experience the payment process, enter the fields and click **Pay Now** below. Please use the bank account and PayBy account of test environment version to experience. Find the apk and account [here](/demos/testaccount).
 
 

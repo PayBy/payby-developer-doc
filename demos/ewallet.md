@@ -20,7 +20,7 @@ You can also scan code to get the link above:
 
 <br/>
 
-**Step 2**: If you have opened the page of the link above, this page simulates a scenario that multiple selectable e-wallets appear on your checkout page. Enter payment amount and choose one e-wallet. Since we only provide the PayBy apk in test environment, please choose PayBy. And make sure that you have installed the PayBy app. Find the apk and account [here](/docs/testaccount).
+**Step 2**: If you have opened the page of the link above, this page simulates a scenario that multiple selectable e-wallets appear on your checkout page. Enter payment amount and choose one e-wallet. Since we only provide the PayBy apk in test environment, please choose PayBy. And make sure that you have installed the PayBy app. Find the apk and account [here](/demos/testaccount).
 
 <br/>
 

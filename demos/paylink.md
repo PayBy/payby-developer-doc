@@ -9,7 +9,7 @@ Add the product and set the amount to generate a permnant link that can be repea
 
 <br/>
 
-Here is a sample, please use the bank account or PayBy account of test environment version to experience the payment process. Find the apk and account [here](/docs/testaccount).
+Here is a sample, please use the bank account or PayBy account of test environment version to experience the payment process. Find the apk and account [here](/demos/testaccount).
 
 <br/>
 

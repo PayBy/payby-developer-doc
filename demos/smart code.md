@@ -8,13 +8,13 @@ Set the amount to generate a QR code. You can download from PayBy protal and pri
 
 <br/>
 
-Here is a sample, please use the PayBy app of test environment version to scan the code and experience the payment process. Find the apk and account [here](/docs/testaccount).
+Here is a sample, please use the PayBy app of test environment version to scan the code and experience the payment process. Find the apk and account [here](/demos/testaccount).
 
 <br/>
 
 ![1](./pic/smartcode.png)
 
-**Step 1**: Use PayBy app of test environment to scan the code above ( Unable to scan code with camera in test environment). Find the apk and account [here](/docs/testaccount).
+**Step 1**: Use PayBy app of test environment to scan the code above ( Unable to scan code with camera in test environment). Find the apk and account [here](/demos/testaccount).
 
 <br/>
 

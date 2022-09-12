@@ -8,7 +8,7 @@ Create and send an invoice in minutes and choose to send your invoice via email,
 
 <br/>
 
-Here is a sample, please use the bank account and PayBy account of test environment version to experience the payment process. Find the apk and account [here](/docs/testaccount).
+Here is a sample, please use the bank account and PayBy account of test environment version to experience the payment process. Find the apk and account [here](/demos/testaccount).
 
 <br/>
 
