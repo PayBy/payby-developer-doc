@@ -5,9 +5,11 @@ toc_max_heading_level: 6
 
 
 
-# Integration Guide
+# Get Started
 
-### **1. Choose the product you want to integrate**
+An overview of the process to start accepting payments using PayBy.
+
+### **1. Know about PayBy products**
 
 Start by understanding what products you can integrate to meet your needs. We provide a variety of payment products to suit different payment scenarios, including online payment, offline payment, web payment and mobile payment, etc.
 
@@ -21,7 +23,7 @@ You need to create a test merchant and apply for the products you need to use in
 
 Create test merchant https://uat-web-merchant.test2pay.com/
 
-Request a product https://uat-web-merchant.test2pay.com/products/all-products
+Apply a product https://uat-web-merchant.test2pay.com/products/all-products
 
 We will process your application as soon as we receive it on weekdays. If you have special needs, please contact [merchant@payby.com](mailto:merchant@payby.com) directly.
 
@@ -201,11 +203,23 @@ Description of this code. View the [resconse codes](#response code) section to k
 
 No special meaning, PayBy internally used to locate the error.
 
+<br/>
 
+### 5. Build your integration
+
+Choose your integration to match your business needs in the menu:
+
+**Checkout**: Hosted paypage, Iframe paypage, In-App SDK
+
+**Special payment scenes**: E-wallet, DYNQR, QRPAY, JSAPI, Direct pay
+
+**E-commerce plugin**: Magento plugin, Opencart plugin, WooCommerce plugin
+
+**Fundout**: Transfer, Transfer to bank
 
 <br/>
 
-### **5. Get ready to go live**
+### **6. Get ready to go live**
 
 If you have successfully verified in the test environment and prepare to launch in live environment, follow the steps as you have done in the test environment.
 

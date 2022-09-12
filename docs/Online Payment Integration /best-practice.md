@@ -1,11 +1,9 @@
 ---
-sidebar_position: 3
+sidebar_position: 90
 toc_max_heading_level: 6
 ---
 
-
-
-# System integration best practice
+# Best practice
 
 <br/>
 

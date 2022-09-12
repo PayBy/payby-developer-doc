@@ -1,10 +1,11 @@
 ---
 sidebar_position: 4
+toc_max_heading_level: 6
 ---
 
 # JSAPI  
 
-**BOTIM & BOTIMPayBy built-in checkout**
+**BOTIM & PayBy built-in checkout**
 
 The merchant has an mobile website, when the customer opens the webpage in BOTIM through a message, the built-in checkout  will be invoked to complete the order and purchase process.
 
@@ -46,13 +47,13 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-#### **Change Order Status**
+#### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 
-#### **Retrieve Order**
+#### Retrieve Order
 
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 

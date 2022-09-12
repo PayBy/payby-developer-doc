@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 # Hosted paypage
@@ -10,7 +11,7 @@ Hosted paypage is one of the most common and easiest ways to acquire payments. I
 
 ### User experience
 
-1. When customers are ready to complete their payment, your application creates a new order creation request.
+1. The customers are ready to complete their payment, your application creates a new order creation request.
 2. The PayBy returns a URL that redirects customers to a hosted payment page.
 3. Customers choose a payment method and enter their payment details on the payment page to complete the transaction.
 4. If the payment is completed, customers will be redirected to the merchant's success page.<br/>
@@ -23,7 +24,7 @@ Hosted paypage is one of the most common and easiest ways to acquire payments. I
 
 ### Integrate the API
 
-#### **Create Order**
+#### Create Order
 
 When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `PAYPAGE` in the **paysceneCode** parameter.<br/>
 
@@ -41,13 +42,13 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-#### **Change Order Status**
+#### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 
-#### **Retrieve Order**
+#### Retrieve Order
 
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 

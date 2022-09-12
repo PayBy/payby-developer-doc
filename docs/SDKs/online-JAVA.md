@@ -1,8 +1,9 @@
 ---
 sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
-# PayBy Payment Gateway integration SDK for JAVA
+# Online payment SDK - JAVA
 
 ### Description
 

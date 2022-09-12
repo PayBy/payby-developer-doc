@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+toc_max_heading_level: 6
 ---
 
 # Iframe paypage
@@ -24,7 +25,7 @@ Unlike the hosted paypage, using iframe payapge will not go out of your website 
 
 ### Integrate the API
 
-#### **Load PayBy JS SDK**
+#### Load PayBy JS SDK
 
 ```
 <script async src="https://checkout.payby.com/sdk/payby-sdk.umd.js"></script>
@@ -32,7 +33,7 @@ Unlike the hosted paypage, using iframe payapge will not go out of your website 
 
 
 
-#### **Get tokenUrl**
+#### Get tokenUrl
 
 When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `PAYPAGE` in the **paysceneCode** parameter.<br/>If the request is successful, PayBy will return a token url that can be rendered in the container on your checkout page.
 
@@ -40,7 +41,7 @@ When the customer confirms to pay, call the [Create order](/docs/createorder) AP
 
 
 
-#### **Create an Iframe**
+#### Create an Iframe
 
 Use PayBy.createIframe with tokenUrl to create an iFrame within a predefined div element.
 
@@ -101,13 +102,11 @@ When the iFrame processes failed payment, the merchant's website needs to prompt
 
 <br/>
 
-#### **Redirect URL**
+#### Redirect URL
 
 Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.
 
 <br/>
-
-
 
 
 
@@ -117,13 +116,13 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-#### **Change Order Status**
+#### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 
-#### **Retrieve order deatail**
+#### Retrieve order deatail
 
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 

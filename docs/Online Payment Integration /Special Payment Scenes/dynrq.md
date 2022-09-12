@@ -1,12 +1,13 @@
 ---
 sidebar_position: 2
+toc_max_heading_level: 6
 ---
 
 # DYNRQ
 
 **Merchant presented QR code**
 
-After the customer places an order, a dynamic code is generated on the interface, and the customer can scan the code by PayBy , BOTIM APP to complete the payment.<br/>
+After the customer places an order, a dynamic code is generated on the merchant's interface - website, mobile app or even a vending machine, and the customer can scan the code by PayBy , BOTIM APP to complete the payment.<br/>
 
 Some interfaces are not suitable for customers to enter card information, such as vending machines or parking garages, this method can effectively transfer the payment process from the merchant interface to the user's mobile phone. Making payments via QR codes is very secure. It’s because the QR code is nothing but just a tool that is used to exchange information. Any data which is transferred via QR codes is encrypted thus making the payment foolproof secure.
 
@@ -46,7 +47,7 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-#### **Change Order Status**
+#### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 

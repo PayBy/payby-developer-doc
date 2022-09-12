@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 # E-wallet
@@ -31,7 +32,9 @@ Call the [Create order](/docs/createorder) API,  follow the API description to c
 
 If the request is successful, PayBy will return a deeplink to redirect the customer to the target ewallet.<br/>
 
-Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.<br/>
+Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.
+
+<br/>
 
 #### Asynchronous notification
 
@@ -39,13 +42,13 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-#### **Change Order Status**
+#### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 
-#### **Retrieve Order**
+#### Retrieve Order
 
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
