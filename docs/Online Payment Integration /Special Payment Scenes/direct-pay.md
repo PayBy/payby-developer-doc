@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+toc_max_heading_level: 6
 ---
 
 # Direct Pay

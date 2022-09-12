@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+toc_max_heading_level: 6
 ---
 
 # QRPAY 
@@ -46,13 +47,13 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-#### **Change Order Status**
+#### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
 <br/>
 
-#### **Retrieve Order**
+#### Retrieve Order
 
 To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
