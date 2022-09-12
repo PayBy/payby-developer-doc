@@ -29,7 +29,7 @@ PayBy provides API for card transactions for merchants to integrate, customers f
 
 
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DIRECTPAY` in the **paysceneCode** parameter.<br/>
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paysceneCode** parameter.<br/>
 
 <br/>
 
@@ -57,7 +57,7 @@ To change order status, you can initiate [Revoke](/docs/revoke), [Cancel](/docs/
 
 <br/>
 
-To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
+To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
 
 <br/>
 
@@ -67,7 +67,7 @@ If the customer has paid before and the merchant has stored the card details, he
 
 ![savedcard](../pic/savedcard.png)
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DIRECTPAY` in the **paysceneCode** parameter.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paysceneCode** parameter.
 
 <br/>
 
@@ -83,7 +83,7 @@ If the **notify_url** is set in the order creation request, after the transactio
 
 <br/>
 
-To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
+To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 <br/>
 
