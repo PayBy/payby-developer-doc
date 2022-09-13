@@ -8,11 +8,7 @@ import FormItem from "antd/es/form/FormItem";
 import QRCode from "qrcode.react";
 import { AccountTable } from ".";
 import { orderCreation, validateAmount } from "../utils";
-ConfigProvider.config({
-  theme: {
-    primaryColor: "#00A75D",
-  },
-});
+
 
 type OrderCreationParams = {
   amount: string;

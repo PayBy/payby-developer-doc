@@ -7,8 +7,8 @@ const mdxMermaid =require('mdx-mermaid')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'PayBy Developer Documentation',
-  tagline: 'PayBy Merchant Documentation for developers',
+  title: 'Integrate PayBy and Accept Payment',
+  tagline: 'PayBy, a flexible and fast payment solution to manage all business transactions.',
   url: 'https://kunlongxu.github.io',
   baseUrl: '/payby-developer-doc/',
   onBrokenLinks: 'throw',
@@ -91,7 +91,7 @@ const config = {
             label: 'Doc',
             docId:'Payment/OrderCreation/createOrder'
           },
-          {to: '/blog', label: 'Blog', position: 'right'},
+          // {to: '/blog', label: 'Blog', position: 'right'},
           {
             to: '/demos/overview',
             label: 'Demos',
