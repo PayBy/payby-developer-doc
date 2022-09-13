@@ -71,7 +71,10 @@ const config = {
       }),
     ],
   ],
-
+  customFields: {
+    // 把你的自定义环境放在这里
+    env: process.env.NODE_ENV,
+  },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

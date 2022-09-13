@@ -1,6 +1,7 @@
 import React from "react";
 import {Table,Divider} from "antd";
 import { Link } from "react-router-dom";
+import Account from './Account.md'
 
 const dataSource = [
   {
@@ -98,12 +99,7 @@ export class AccountTable extends React.Component<AccountTableProps> {
         <Divider />
         <h4>Demo in test mode</h4>
         <p>You can copy and paste the following buyer info to trigger different scenarios:</p>
-        <Table
-          dataSource={dataSource}
-          columns={this.renderColumns()}
-          rowKey='mobile'
-          pagination={false}
-        />
+        <Account/>
         {/* <WhiteSpace gutter={16} /> */}
         {showBankCardList && (
           <React.Fragment>

@@ -25,6 +25,10 @@ details.alert{
   box-shadow:none;
 }
 
+body{
+  font-size:16px !important;
+}
+
 code {
   --ifm-code-background:#eee;
   border: none;

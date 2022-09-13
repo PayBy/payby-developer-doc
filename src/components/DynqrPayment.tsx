@@ -1,47 +1,51 @@
 import React, { useState } from "react";
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
-import { Button, Form, Input, ConfigProvider } from "antd";
-import "antd/dist/antd.variable.min.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { Button, ConfigProvider, Form, Input } from "antd";
 import { useForm } from "antd/es/form/Form";
 import FormItem from "antd/es/form/FormItem";
-import message from "antd/es/message";
-import { AccountTable } from ".";
 import QRCode from "qrcode.react";
-import _ from "lodash";
-
-export function validateAmount(data) {
-  let { amount } = data;
-  amount = amount ? amount.toString().replace(/,/g, "") : 0;
-  if (amount <= 0) {
-    return message.error("Please enter valid amount.");
-  }
-}
-
+import { AccountTable } from ".";
+import { orderCreation, validateAmount } from "../utils";
 ConfigProvider.config({
   theme: {
     primaryColor: "#00A75D",
   },
 });
 
+type OrderCreationParams = {
+  amount: string;
+  paySceneCode: string;
+};
+
 function DynqrPayment(props: { orderCreation?: any; siteConfig?: any }) {
-  const [showQRCode, setShowQRCode] = useState<boolean>(true);
+  const [showQRCode, setShowQRCode] = useState<boolean>(false);
+  const [tokenUrl, setTokenUrl] = useState<string>("_____");
+  const {
+    siteConfig: { customFields },
+  } = useDocusaurusContext();
+  let env = customFields.env as string;
   const [form] = useForm<{ paySceneCode: string }>();
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    const values = await form.validateFields(["amount"]);
+
+  const handleSubmit = async (e: { amount: string }) => {
+    console.log(e, "ee");
+
+    const values: Partial<OrderCreationParams> = { amount: e.amount };
     if (!validateAmount(values)) {
       console.log("values", values);
       values.paySceneCode = "DYNQR";
-      props.orderCreation(values, () => {
-        setShowQRCode(true);
-      });
+      orderCreation(
+        values,
+        (result) => {
+          setShowQRCode(true);
+          setTokenUrl(result.interActionParams?.tokenUrl);
+        },
+        env
+      );
     }
   };
 
-  const { siteConfig } = props;
-  console.log(siteConfig);
-  const tokenUrl = _.chain(siteConfig).get("interActionParams.tokenUrl", "").value();
   return (
     <ConfigProvider>
       <section style={{ margin: "0 auto" }}>
