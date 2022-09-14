@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdeveloper_official_site=self.webpackChunkdeveloper_official_site||[]).push([[3283],{33941:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/payby-developer-doc/blog/tags/facebook","allTagsPath":"/payby-developer-doc/blog/tags","count":1}')}}]);

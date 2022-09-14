@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdeveloper_official_site=self.webpackChunkdeveloper_official_site||[]).push([[6475],{53630:e=>{e.exports=JSON.parse('{"permalink":"/payby-developer-doc/blog/tags/hello","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

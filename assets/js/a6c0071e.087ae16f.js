@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdeveloper_official_site=self.webpackChunkdeveloper_official_site||[]).push([[8070],{54793:e=>{e.exports=JSON.parse('{"label":"hola","permalink":"/payby-developer-doc/blog/tags/hola","allTagsPath":"/payby-developer-doc/blog/tags","count":1}')}}]);
