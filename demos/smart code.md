@@ -14,6 +14,8 @@ Here is a sample, please use the PayBy app of test environment version to scan t
 
 ![1](./pic/smartcode.png)
 
+<br/>
+
 **Step 1**: Use PayBy app of test environment to scan the code above ( Unable to scan code with camera in test environment). Find the apk and account [here](/demos/testaccount).
 
 <br/>
