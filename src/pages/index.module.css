@@ -4,20 +4,37 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 8rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-image:url('@site/static/img/banner.svg');
+  background-size:cover;
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
+    
   }
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+
+}
+
+.buttons :global(.ant-btn-lg){
+  border-radius:4px;
+}
+
+
+.title{
+  color: var(--ifm-hero-background-color);
+  text-align:left;
+}
+
+.tagline{
+  text-align:left;
 }

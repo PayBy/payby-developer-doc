@@ -7,8 +7,8 @@ const mdxMermaid =require('mdx-mermaid')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'PayBy Developer Documentation',
-  tagline: 'PayBy Merchant Documentation for developers',
+  title: 'Integrate PayBy and Accept Payment',
+  tagline: 'PayBy, a flexible and fast payment solution to manage all business transactions.',
   url: 'https://kunlongxu.github.io',
   baseUrl: '/payby-developer-doc/',
   onBrokenLinks: 'throw',
@@ -27,7 +27,26 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        /**
+         * 多实例插件必填。
+         */
+        id: 'demos',
+        /**
+         * 你的网站上博客的 URL 路由。
+         * *请务必不要*添加末尾斜杠。
+         */
+        routeBasePath: 'demos',
+        /**
+         * 相对于站点目录的文件系统路径。
+         */
+        path: 'demos',
+      },
+    ],
+  ],
   presets: [
     [
       'classic',
@@ -52,12 +71,15 @@ const config = {
       }),
     ],
   ],
-
+  customFields: {
+    // 把你的自定义环境放在这里
+    env: process.env.NODE_ENV,
+  },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Developer Website',
+        title: 'Developer',
         logo: {
           alt: 'PayBy Developer Website',
           src: 'img/logo.svg',
@@ -65,62 +87,22 @@ const config = {
         items: [
           {
             type: 'doc',
-            position: 'left',
-            label: 'Doc',
+            position: 'right',
+            label: 'APIs',
             docId:'Payment/OrderCreation/createOrder'
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'right'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            to: '/demos/overview',
+            label: 'Demos',
             position: 'right',
+            activeBaseRegex: `/community/`,
           },
         ],
       },
       footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Payment',
-                to: '/docs/createorder',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        // style: 'dark',
+        copyright: `Copyright © ${new Date().getFullYear()} PayBy, Inc. All Rights Reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
