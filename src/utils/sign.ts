@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import Encrypt from "jsencrypt";
 import CryptoJS from "crypto-js";
 
 const PrivateKey = `-----BEGIN PRIVATE KEY-----
@@ -31,13 +30,20 @@ CENt3BkAvFzCkphmEpPT+g0SPv/9dhZyM0bP0s/QEJ73E6CYKD8FsqfVVUqtctxo
 jvrFOQhJ0CRQsD8MBlR/rk1p
 -----END PRIVATE KEY-----`;
 
-const RSA = new Encrypt();
-RSA.setPrivateKey(PrivateKey);
 
-export function encrypt(data) {
+
+export async function encrypt(data) {
+  let RSA
+  if (typeof window === "undefined") {
+    const JSEncrypt = require("jsencrypt").default;
+    RSA = new JSEncrypt();
+    RSA.setPrivateKey(PrivateKey);
+  } else {
+    let jsEncryptModule = await import("jsencrypt");
+    RSA = new jsEncryptModule.JSEncrypt();
+    RSA.setPrivateKey(PrivateKey); 
+    
+  }
   return RSA.sign(JSON.stringify(data), CryptoJS.SHA256, "sha256");
 }
 
-export function decrypt(data) {
-  return RSA.decrypt(data);
-}
