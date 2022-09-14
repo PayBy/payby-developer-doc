@@ -51,13 +51,13 @@ The merchant can directly generate a key pair on PayBy portal. The public key wi
 
 **PayBy Public Key**
 
-Payby generates a key pair for each merchant, the private key is saved by PayBy and the public key is available on the portal for merchants to download. When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+PayBy generates a key pair for each merchant, the private key is saved by PayBy and the public key is available on the portal for merchants to download. When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
 <br/>
 
 **IP Whitelist**
 
-When the merchant calls the API, Payby only allows requests from the whitelist to go through. IP whitelist is required to set, otherwise an error will be reported when API is called. One or more whitelist IPs can be set. If you want to allow any IP to pass through, you can fill in *.
+When the merchant calls the API, PayBy only allows requests from the whitelist to go through. IP whitelist is required to set, otherwise an error will be reported when API is called. One or more whitelist IPs can be set. If you want to allow any IP to pass through, you can fill in *.
 
 <br/>
 
@@ -161,7 +161,7 @@ When PayBy sends response to you, the respons content includes **Http Header** a
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
 <br/>
 

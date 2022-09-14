@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Asynchronous notification
 
-If the `notifyUrl` parameter is passed in the applying protocol request to receive notifications, Payby will send a message to the address in the following scenarios.
+If the `notifyUrl` parameter is passed in the applying protocol request to receive notifications, PayBy will send a message to the address in the following scenarios.
 
 <br/>
 
@@ -38,7 +38,7 @@ Example value: application/json
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
 <br/>
 
@@ -48,7 +48,7 @@ When Payby sends response, Payby will use its own private key to sign the messag
 
 **notify_timestamp**  <font color = ' #7d8793'>Timestamp</font>  <font color = '#f19938'>Required</font>
 
-The timestamp when Payby sent the request.
+The timestamp when PayBy sent the request.
 
 Example value: 1586849271877
 
@@ -56,7 +56,7 @@ Example value: 1586849271877
 
 **notify_id**  <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
 
-The unique identification number of this notification within the Payby system.
+The unique identification number of this notification within the PayBy system.
 
 Example value: 202004140007474501
 

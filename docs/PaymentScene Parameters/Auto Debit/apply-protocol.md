@@ -154,7 +154,7 @@ The attributes are:
 
   - **appId** <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
 
-    Your app needs to be registered with Payby. Payby will assign an app id after successful registration. Please log in to the portal and visit [Setting - Developers - My Apps] to register your application.
+    Your app needs to be registered with PayBy. PayBy will assign an app id after successful registration. Please log in to the portal and visit [Setting - Developers - My Apps] to register your application.
 
     Example value: 20211222000000241
 
@@ -217,7 +217,7 @@ Http Body
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
-When Payby sends response, Payby will use its own private key to sign the message, and the merchant uses Payby 's public key to verify the signature. If the verification is passed, it proves that the response was sent by Payby and not faked by others.
+When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
 <br/>
 

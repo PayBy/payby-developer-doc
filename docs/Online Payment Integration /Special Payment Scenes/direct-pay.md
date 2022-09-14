@@ -41,7 +41,7 @@ Usually, the payment can be completed after the user enters the card information
 
 <br/>
 
-If you feel that the customer's transaction requires a higher level of verification, you can actively initiate 3DS verification.The **threeDSecure** parameter is for the merchant to decide whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, Payby will debit the payment directly after submitting the payment request. The default is False. Note that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
+If you feel that the customer's transaction requires a higher level of verification, you can actively initiate 3DS verification.The **threeDSecure** parameter is for the merchant to decide whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, PayBy will debit the payment directly after submitting the payment request. The default is False. Note that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
 <br/>
 
