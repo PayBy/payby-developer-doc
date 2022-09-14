@@ -4,9 +4,7 @@ sidebar_position: 6
 
 # JSAPI
 
-**BOTIM & PayBy built-in checkout**
-
-The merchant has an mobile website, when the customer opens the webpage in BOTIM through a message, the built-in checkout will be invoked to complete the order and purchase process.
+The product is to invoke BOTIM & PayBy built-in checkout. The merchant has an mobile website, when the customer opens the webpage in BOTIM through a message, the built-in checkout will be invoked to complete the order and purchase process.
 
 <br/>
 

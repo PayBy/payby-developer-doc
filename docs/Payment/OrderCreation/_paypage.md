@@ -2,7 +2,7 @@
 
 **Paypage**
 
-(Hosted paypage & Iframe paypage)
+(Hosted paypage & iFrame paypage)
 
 ---
 

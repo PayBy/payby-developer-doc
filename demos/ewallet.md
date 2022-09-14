@@ -16,6 +16,8 @@ You can also scan code to get the link above:
 
 ​	
 
+<br/>
+
 **Step 1**: Visit the link above. 
 
 <br/>

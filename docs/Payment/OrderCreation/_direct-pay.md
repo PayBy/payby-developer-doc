@@ -59,7 +59,7 @@
 
 - **threeDSecure** <span style={{color:" #7d8793"}}>Boolean</span>
 
-  The merchant decides whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, Payby will debit the payment directly after submitting the payment request. The default is False.
+  The merchant decides whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, PayBy will debit the payment directly after submitting the payment request. The default is False.
 
   Notice that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 
@@ -132,7 +132,7 @@
 
 - **threeDSecure** <span style={{color:" #7d8793"}}>Boolean</span>
 
-  The merchant decides whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, Payby will debit the payment directly after submitting the payment request. The default is False.
+  The merchant decides whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, PayBy will debit the payment directly after submitting the payment request. The default is False.
 
   Notice that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
 

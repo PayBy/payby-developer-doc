@@ -124,7 +124,7 @@ https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-pay
 3. Enter the Subject provided.
 4. Enter the Merchant Partner Id provided.  
 5. Enter the Merchant Private Key provided. (Don't remove the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)   
-6. Enter the Payby Public Key provided. (Don't remove the -----BEGIN PUBLIC KEY----- and -----END PUBLIC KEY-----)  
+6. Enter the PayBy Public Key provided. (Don't remove the -----BEGIN PUBLIC KEY----- and -----END PUBLIC KEY-----)  
 7. Select Run Mode Sandbox for testing, Production for general usage. 
 8. Enter PayBy Payment OrderNo Prefix like 'wp_'  
 9. Click on Save changes to update the settings. 

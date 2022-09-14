@@ -12,7 +12,7 @@ Select the payment product you want to access and check the user experience and 
 
 `Hosted paypage` - Redirect your customer to a PayBy hosted paypage.
 
-`Iframe paypage` - Embed the checkout in your website.
+`iFrame paypage` - Embed the checkout in your website.
 
 `In-App SDK` - The checkout in SDK format.
 
