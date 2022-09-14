@@ -1,3 +1,7 @@
+```
+toc_max_heading_level: 6
+```
+
 #### Response sample
 
 ```json
