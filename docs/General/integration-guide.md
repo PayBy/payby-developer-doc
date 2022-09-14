@@ -209,7 +209,7 @@ No special meaning, PayBy internally used to locate the error.
 
 Choose your integration to match your business needs in the menu:
 
-**Checkout**: Hosted paypage, Iframe paypage, In-App SDK
+**Checkout**: Hosted paypage, iFrame paypage, In-App SDK
 
 **Special payment scenes**: E-wallet, DYNQR, QRPAY, JSAPI, Direct pay
 

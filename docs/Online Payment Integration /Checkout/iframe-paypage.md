@@ -3,10 +3,10 @@ sidebar_position: 2
 toc_max_heading_level: 6
 ---
 
-# Iframe paypage
+# iFrame paypage
 
-Iframe Payment Page is a website prepared by PayBy and can be embedded in your website. The Hosted Pay Page still resides on PayBy’ secure servers but the transition to the PayBy secure page is invisible to the cardholder.<br/>
-Unlike the hosted paypage, using iframe payapge will not go out of your website when customer pays, which can reduce the failure rate of payment. At the same time, integrating it on its own page will provide you more flexibility.
+iFrame Payment Page is a website prepared by PayBy and can be embedded in your website. The Hosted Pay Page still resides on PayBy’ secure servers but the transition to the PayBy secure page is invisible to the cardholder.<br/>
+Unlike the hosted paypage, using iFrame payapge will not go out of your website when customer pays, which can reduce the failure rate of payment. At the same time, integrating it on its own page will provide you more flexibility.
 
 <br/>
 
@@ -17,7 +17,7 @@ Unlike the hosted paypage, using iframe payapge will not go out of your website 
 3. Customers choose a payment method and enter their payment details on the payment page to complete the transaction.
 4. If the payment is completed, customers will be redirected to the merchant's success page.<br/>
 
-![hostedflow](../pic/card-ue-iframe.png)
+![hostedflow](../pic/card-ue-iFrame.png)
 
 
 
@@ -37,16 +37,16 @@ Unlike the hosted paypage, using iframe payapge will not go out of your website 
 
 When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `PAYPAGE` in the **paysceneCode** parameter.<br/>If the request is successful, PayBy will return a token url that can be rendered in the container on your checkout page.
 
-![iframeflow](../pic/iframe.png)
+![iFrameflow](../pic/iFrame.png)
 
 
 
-#### Create an Iframe
+#### Create an iFrame
 
-Use PayBy.createIframe with tokenUrl to create an iFrame within a predefined div element.
+Use PayBy.createiFrame with tokenUrl to create an iFrame within a predefined div element.
 
 ```
-PayBy.createIframe({
+PayBy.createiFrame({
   id: 'container',
   lang: 'ar',
   tokenUrl: tokenUrl,
