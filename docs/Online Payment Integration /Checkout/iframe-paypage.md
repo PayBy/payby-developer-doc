@@ -17,7 +17,7 @@ Unlike the hosted paypage, using iFrame payapge will not go out of your website 
 3. Customers choose a payment method and enter their payment details on the payment page to complete the transaction.
 4. If the payment is completed, customers will be redirected to the merchant's success page.<br/>
 
-![hostedflow](../pic/card-ue-iFrame.png)
+<!-- ![hostedflow](../pic/card-ue-iFrame.png) -->
 
 
 
