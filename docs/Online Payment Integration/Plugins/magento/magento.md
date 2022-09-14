@@ -1,4 +1,4 @@
-# Magento Plugin
+# Magento plugin
 
 PayBy offers various plugins that enable you to accept payments on your ecommerce website via the PayBy Payment Gateway. You can accept payments via debit card, credit card, netbanking (supports 3D Secure) or through any of our supported wallets.
 <br/>

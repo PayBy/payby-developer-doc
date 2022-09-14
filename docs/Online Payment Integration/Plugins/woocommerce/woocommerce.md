@@ -1,4 +1,4 @@
-# WooCommerce Plugin
+# WooCommerce plugin
 
 WooCommerce is an open source, completely customizable ecommerce platform for entrepreneurs worldwide. It offers a flexible way to build an ecommerce store with WordPress.
 
