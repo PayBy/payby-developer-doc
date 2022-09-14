@@ -12,7 +12,7 @@ Step 1:Create your account in the PayBy Merchant Portal.
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
 | Production      | https://b.payby.com |
-| Sandbox      | https://uat-web-merchant.test2pay.com/ |
+| UAT      | https://uat-web-merchant.test2pay.com/ |
 
 <br/>
 
@@ -116,7 +116,7 @@ Step 3:Configure Opencart
 6. Enter the Merchant Private Key provided. 
 7. Enter the PayBy Public Key provided.  
 8. Select the Completed Order Status. 
-9. Select Run Mode Sandbox for testing, Production for general usage. 
+9. Select Run Mode UAT for testing, Production for general usage. 
 10. Enter PayBy Payment OrderNo Prefix like 'pb_'  
 11. Confirm that AED currency is set.
 12. Change the status to Enabled. 

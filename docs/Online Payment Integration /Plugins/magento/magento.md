@@ -14,7 +14,7 @@ Step 1:Create your account in the PayBy Merchant Portal.
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
 | Production      | https://b.payby.com |
-| Sandbox      | https://uat-web-merchant.test2pay.com/ |
+| UAT      | https://uat-web-merchant.test2pay.com/ |
 
 <br/>
 

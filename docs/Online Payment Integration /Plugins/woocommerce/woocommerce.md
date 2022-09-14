@@ -16,7 +16,7 @@ Step 1: Create your account in the PayBy Merchant Portal.
 | Environment                 | URL                                                       |
 | ---------------------- | ------------------------------------------------------------ |
 | Production      | https://b.payby.com |
-| Sandbox      | https://uat-web-merchant.test2pay.com/ |
+| UAT      | https://uat-web-merchant.test2pay.com/ |
 
 <br/>
 
@@ -125,7 +125,7 @@ https://github.com/PayBy/Extenstions/blob/master/woocommerce-payment-gateway-pay
 4. Enter the Merchant Partner Id provided.  
 5. Enter the Merchant Private Key provided. (Don't remove the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)   
 6. Enter the PayBy Public Key provided. (Don't remove the -----BEGIN PUBLIC KEY----- and -----END PUBLIC KEY-----)  
-7. Select Run Mode Sandbox for testing, Production for general usage. 
+7. Select Run Mode UAT for testing, Production for general usage. 
 8. Enter PayBy Payment OrderNo Prefix like 'wp_'  
 9. Click on Save changes to update the settings. 
 
