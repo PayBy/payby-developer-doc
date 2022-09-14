@@ -88,7 +88,7 @@ const config = {
           {
             type: 'doc',
             position: 'right',
-            label: 'Doc',
+            label: 'APIs',
             docId:'Payment/OrderCreation/createOrder'
           },
           // {to: '/blog', label: 'Blog', position: 'right'},
