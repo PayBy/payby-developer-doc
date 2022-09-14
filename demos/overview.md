@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-We provide some demos for you to try out payby's online payment products before connecting. Please visit the corresponding menu according to the product name. 
+We provide some demos for you to try out PayBy's online payment products before connecting. Please visit the corresponding menu according to the product name. 
 
 <br/>
 
