@@ -1,7 +1,6 @@
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import moment from "moment";
 import { encrypt } from ".";
-
-
 export async function orderCreation(data, callback, env) {
 	// 创建订单
 	// 测试账户
@@ -35,7 +34,7 @@ export async function orderCreation(data, callback, env) {
 	const response = await fetch(host + "/sgs/api/acquire2/placeOrder", {
 		headers: {
 			"Content-Language": "en",
-			sign: encrypt(body) as string,
+			// sign: encrypt(body) as string,
 			"Partner-Id": "200000042613"
 		},
 		method: "POST",
@@ -49,3 +48,4 @@ export async function orderCreation(data, callback, env) {
 		
 	}
 }
+export default orderCreation;
