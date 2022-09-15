@@ -1,4 +1,3 @@
-#### Response sample
 
 ```json
 Http Header
