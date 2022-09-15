@@ -29,7 +29,7 @@ PayBy provides API for card transactions for merchants to integrate, customers f
 
 
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paysceneCode** parameter.<br/>
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paySceneCode** parameter.<br/>
 
 <br/>
 
@@ -49,7 +49,7 @@ The payer's card information can be saved for future use. In the parameter **sav
 
 <br/>
 
-If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
+If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
 
 <br/>
 
@@ -67,7 +67,7 @@ If the customer has paid before and the merchant has stored the card details, he
 
 ![savedcard](../pic/savedcard.png)
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paysceneCode** parameter.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paySceneCode** parameter.
 
 <br/>
 
@@ -79,7 +79,7 @@ To change order status, you can initiate [Revoke](/docs/revoke), [Cancel](/docs/
 
 <br/>
 
-If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
+If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
 
 <br/>
 

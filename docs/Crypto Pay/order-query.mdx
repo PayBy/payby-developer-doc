@@ -29,7 +29,7 @@ Production : https://api.payby.com/sgs/api/crypto/getOrder
 import RequestHeader from "../_request-header.mdx";
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
@@ -111,7 +111,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **head**
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
   <ResponseHead />
 </details>
 <br/>
@@ -125,8 +125,8 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 
 - **acquireOrder** <font color = ' #7d8793'>Object</font>
 
-  <details>
-  <summary>Show attributes</summary>
+  <details open={true}>
+  <summary>Attributes</summary>
 
   - **requestTime** <font color = ' #7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
 
@@ -171,7 +171,7 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
   - **paymentInfo** <font color = ' #7d8793'>Object</font>
 
     <details>
-      <summary>Show attributes</summary>
+      <summary>Attributes</summary>
 
       <PaymentInfo />
   

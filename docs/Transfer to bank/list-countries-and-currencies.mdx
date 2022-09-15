@@ -29,7 +29,7 @@ Production : https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
 import RequestHeader from '../_request-header.mdx'
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
@@ -86,7 +86,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **head**
 
 <details>
-  <summary>Show header:</summary>
+  <summary>Attributes</summary>
   <ResponseHead />
 </details>
 <br/>
@@ -101,8 +101,8 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 - **fundoutAbilityList** <font color = ' #7d8793'>List</font>
 
   
-<details>
-  <summary>Show attributes of each item in the list</summary>
+<details open={true}>
+  <summary>Attributes of each item in the list</summary>
   <FundoutAbilityList />
 </details>
 
