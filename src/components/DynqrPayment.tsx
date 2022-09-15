@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, ConfigProvider } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import QRCode from "qrcode.react";
 import { AccountTable } from ".";
@@ -12,6 +12,12 @@ type OrderCreationParams = {
   amount: string;
   paySceneCode: string;
 };
+
+ConfigProvider.config({
+  theme: {
+    primaryColor: "#00A75D",
+  },
+});
 
 function DynqrPayment(props: { orderCreation?: any; siteConfig?: any }) {
   const [showQRCode, setShowQRCode] = useState<boolean>(false);
@@ -35,7 +41,6 @@ function DynqrPayment(props: { orderCreation?: any; siteConfig?: any }) {
       );
     }
   };
-
   return (
     <section style={{ margin: "0 auto" }}>
       {/* <WingBlank type="flex" gutter={16}> */}
@@ -72,4 +77,4 @@ function DynqrPayment(props: { orderCreation?: any; siteConfig?: any }) {
   );
 }
 
-export default  DynqrPayment ;
+export default DynqrPayment;
