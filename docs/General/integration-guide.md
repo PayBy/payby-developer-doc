@@ -107,7 +107,7 @@ Try to make a request call to verify whether your configuration is successful. I
 
 <br/>
 
-#### Request header format
+#### **Request header format**
 
 ---
 
@@ -148,8 +148,6 @@ Example value: 200001200101
 Maximum length: `12`
 
 <br/>
-
-
 
 #### Response header format
 
@@ -204,6 +202,7 @@ Description of this code. View the [resconse codes](#response code) section to k
 No special meaning, PayBy internally used to locate the error.
 
 <br/>
+
 
 ### 5. Build your integration
 
