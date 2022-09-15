@@ -3,13 +3,17 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import "@site/src/css/antd.variable.css";
 import Layout from "@theme/Layout";
-import { Button } from "antd";
+import { Button, ConfigProvider } from "antd";
 import clsx from "clsx";
 import React from "react";
 import styles from "./index.module.css";
 
 
-
+ConfigProvider.config({
+  theme: {
+    primaryColor: "#00A75D",
+  },
+});
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -18,6 +22,7 @@ function HomepageHeader() {
         <h1 className={clsx("hero__title hero--primary", styles.title)}>{siteConfig.title}</h1>
         <p className={clsx("hero__subtitle", styles.tagline)}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
+          
           <Button ghost type="primary" size="large">
             <Link to="/docs/createorder">API reference</Link>
           </Button>
