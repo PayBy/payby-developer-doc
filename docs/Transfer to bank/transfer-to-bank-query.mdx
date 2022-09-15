@@ -29,11 +29,11 @@ Production : https://api.payby.com/sgs/api/transfer/getTransferToBankOrder
 import RequestHeader from '../_request-header.mdx'
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
-
+<br/>
 
 #### Http Body
 
@@ -91,8 +91,7 @@ Http Body
     }
 }
 ```
-
-
+<br/>
 
 ### Response
 
@@ -113,10 +112,10 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **head**
 
   <details>
-  <summary>Show header:</summary>
+  <summary>Attributes</summary>
     <ResponseHead />
   </details>
-
+<br/>
 
 **body** 
 
@@ -128,8 +127,8 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 - **transferToBankOrder**   <font color = ' #7d8793'>Object</font>
 
-  <details>
-  <summary>Show attributes</summary>
+  <details open={true}>
+  <summary>Attributes</summary>
     <TransferToBankOrder />
   </details>
 

@@ -30,7 +30,7 @@ Production : https://api.payby.com/sgs/api/crypto/refund/placeOrder
 ---
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
@@ -86,7 +86,7 @@ Example value: 1581493898000
 - **amount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
   <details>
-      <summary>Amount to refund. Show attributes</summary>
+      <summary>Amount to refund. Attributes are</summary>
       <Amount/>
   </details>
   <br/>
@@ -189,7 +189,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **head** 
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
     <ResponseHead />
   </details>
 <br/>
@@ -203,10 +203,10 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 - **refundOrder**   <font color = ' #7d8793'>Object</font>
 
-  <details>
-    <summary>Show attributes</summary>
+  <details open={true}>
+    <summary>Attributes</summary>
     <RefundOrder/>
-      
+  
   </details>
 
 <br/>
@@ -214,7 +214,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 - **refundSummary**   <font color = ' #7d8793'>Object</font>
 
   <details>
-    <summary>Show attributes</summary>
+    <summary>Attributes</summary>
 
     <RefundSummary/>
       

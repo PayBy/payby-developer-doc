@@ -29,7 +29,7 @@ If your store is already equipped with barcode scanners and you don't plan to us
 
 #### Create order
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `QRPAY` in the **paysceneCode** parameter.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `QRPAY` in the **paySceneCode** parameter.
 
 <br/>
 
@@ -43,7 +43,7 @@ After the payment the payby server will notify the result to PayBy or BOTIM  app
 
 #### Asynchronous notification
 
-If the **notify_url** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
+If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
 
 <br/>
 
@@ -55,7 +55,7 @@ You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/
 
 #### Retrieve Order
 
-To retrieve the order deatail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
+To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![dynqyflow](../pic/dynqr.png)
 

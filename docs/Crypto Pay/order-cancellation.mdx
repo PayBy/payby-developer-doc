@@ -32,12 +32,12 @@ Production : https://api.payby.com/sgs/api/crypto/cancelOrder
 ---
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
 
-
+<br/>
 
 #### Http Body
 
@@ -106,7 +106,7 @@ Http Body
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-
+<br/>
 
 #### Http Body
 
@@ -115,10 +115,10 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **head** 
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
     <ResponseHead />
   </details>
-
+<br/>
 
 
 **body** 
@@ -130,10 +130,12 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 - **acquireOrder**   <font color = ' #7d8793'>Object</font>
 
-  <details>
-  <summary>Show attributes</summary>
+  <details open={true}>
+  <summary>Attributes</summary>
     <AcquireOrder />
   </details>
+
+<br/>
 
 #### Response sample
 
@@ -211,5 +213,4 @@ Http Body
   }
 }
 ```
-
 

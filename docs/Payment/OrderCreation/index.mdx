@@ -62,7 +62,7 @@ export function SwitchProduct() {
 ​      <b>paySceneParams</b> <span style={{ color: " #7d8793" }}>String</span>
 ​      <details open={true}>
 ​        <summary>
-​          Show attributes
+​          Attributes
 ​        </summary>
 ​        <ProductComponent />
 ​      </details>
@@ -91,7 +91,7 @@ Production : https://api.payby.com/sgs/api/acquire2/placeOrder
 ---
 
 <details>
-  <summary>Show attributes</summary>
+  <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
@@ -269,7 +269,7 @@ The attributes are:
   This can be useful for storing additional information about the order.
   
   <details>
-    <summary>Show attributes</summary>
+    <summary>Attributes</summary>
     <AccessoryContent/> 
   </details>
 
@@ -359,7 +359,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **head**
 
   <details>
-    <summary>Show attributes</summary>
+    <summary>Attributes</summary>
     <ResponseHead />
   </details>
 <br/>
@@ -370,8 +370,8 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 - **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
 
-  <details>
-  <summary>Show attributes</summary>
+  <details open={true}>
+  <summary>Attributes</summary>
     <AcquireOrder />
   </details>
 

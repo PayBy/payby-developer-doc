@@ -56,6 +56,5 @@ require_once('/path/to/payby-php/init.php');
 
 ```php
 // TODO
-
 ```
 
