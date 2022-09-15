@@ -5,6 +5,8 @@ http://developer.yahoo.com/yui/license.html
 version: 2.9.0
 */
 
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
 /**
  * @fileOverview
  * @name asn1-1.0.js
