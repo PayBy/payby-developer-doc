@@ -31,16 +31,3 @@
   Default value: False
   
   <br/>
-
-**Sample**
-
-```json
-
-"paySceneCode": "EWALLET",
-"paySceneParams": {
-"eWalletCode": "payby",
-"redirectUrl": "http://www.yoursite.com/web/paydone.html?orderId=414768633924763654",
-"oneTimePayment": "true"
-}
-
-```
